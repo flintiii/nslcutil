@@ -1,2 +1,2 @@
 # nslcutil
-National Student Leadership Conference  Enrollment Transmission checking program
+National Student Clearinghouse  Enrollment Transmission checking program
