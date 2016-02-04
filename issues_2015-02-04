@@ -1,0 +1,9 @@
+This is the state of the following 
+
+./nslcutil.py  -f  or  --2xlsx    <ifile> <ofile>      Converts CSV output of Goddard SIS NSLC to a Microsoft Excel XLSX format.	Status: needs buildout
+./nslcutil.py   -c  or  --testcsv  <ifile> <logfile>   Tests the CSV output of Goddard SIS NSLC to conform with NSLC requirements.	Status: Prototype built that can apply to tab
+./nslcutil.py   -x  or  --testxls  <ifile> <logfile>   Tests if a Microsoft Excel XLSX format file conforms with NSLC requirements.	Status: Prototype built that uses openpylx
+./nslcutil.py   -t  or  --testtab  <ifile> <logfile>   Tests if a TAB seperated file conforms with NSLC requirements.			Status: CSV prototype can apply needs buildout
+./nslcutil.py   -s  or  --tespace  <ifile> <logfile>   Tests if a fixed field file conforms with NSLC requirements.			Status: Fixed Field prototype built, not installed
+./nslcutil.py   -m  or  --transmit ) <ifile>           Transmitts <infile> to the NSLC destination.					Status: Operates as a shell script, needs integration
+
