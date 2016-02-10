@@ -3,9 +3,10 @@
 # makes commits easy
 git add . && \
 git add -u && \
+git commit --all && \
 git commit -m "$(read -p 'Commit description: ')" && \
-git push nslcutil
-git push github
+echo "Committing to goddard Redmine:"; git push nslcutil
+echo "Committing to Github:";git push gitssl
 echo \"$1\"
 exit
 git push origin HEAD
