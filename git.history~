@@ -41,7 +41,7 @@
  2035  git push github
  2036  cd .git/
  2040  pull ssh://git@github.com:flintiii/nslcutil.git
- 2041  git pull ssh://git@github.com:flintiii/nslcutgit commit -m "reorganize files for nslcutil.py 0.7" -ail.git
+ 2041  git pull ssh://git@github.com:flintiii/nslcutil.git
  2042  git push ssh://git@github.com:flintiii/nslcutil.git
  2043  ssh -vT git@github.com
  2044  git push ssh://git@github.com:flintiii/nslcutil.git

@@ -119,49 +119,28 @@ def ccrider(file):
 	i += 1  # record number
 
 
-def rrread(file,l,e):
-    """
-    Opens file, at line l at element e.
-    returns string found at that position
-    """
-    print "entering rread"
-    of = open(file, 'r')
-    # print file
-    line = of.readline()
-    # print line
-    mylist = line.split(',')
-    print mylist
-    if mylist[0]=="Record Type":
-	print "l = "+l
-	i=0
-	# add insertion of an A3 record print alfadefs[n]+"\t"+eval(alfadefs[n])here
-	while i < l: 			#advance to proper record
-             line = of.readline()
-	     print line
-	     i=i+1
-
-        mylist = line.split(',')
-	print "hello " + mylist
-	return str(mylist[e])
-
-
-def rread(file,l,e):
+def testcsv():
 	"""
-	Opens file, at line l at element e.
-	returns string found at that position
+	Opens file, skips header.
+	returns each line
 	"""
-	e=e
-	print "entering rread"
+	file = "example.csv"
+	print "testing " + file
 	of = open(file, 'r')
 	# print file
-	line = "0," + of.readline()
-	line = "0," + of.readline()
-	# print line
-	mylist = line.split(',')
-	print str(mylist)
-	return str(mylist[e])
+	for line in of:
+		# print line
+		# print mylist
+		# print mylist
+		if "D1" in line:
+			lneval(line)
+			# return line	
+		# print "line processed"
+"+ str(n) + "
 
-def geneval(n):
+		 
+
+def lneval(input):
 	"""
 	This is a general purpose evaluator.  How it works is that it knows the following:
 	Fieldname
@@ -171,44 +150,69 @@ def geneval(n):
 	Required values "R", "O", or "C"
 	Type
 	It uses this information to check the current element and returns a pass/fail.
+	There is a sample element called oddly enough, sample
 	"""
-	# n=3
-	e = 1
-	csvfile = "fixed.example.csv" 
+	# sample="0,D1,975464835,George,,Washington,,,,F,,804 West 15th Street,,Laurel,MS,39440,US,20160626,19670526,20150626,20151123,,N,,,,,,,,,,,,,,,,,,,,,,,,,,Y,231302,2010,05,104000,W,039000,20130628,N,F,20150626,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+	# sample="0,D1,975464835,George,,Washington,,,,F,,804 West 15th Street,,Laurel,MS,39440,US,20160626,19670526,20150626,20151123,s,N,,,,,,,,,,,,,,,,,,,,,,,,,,Y,231302,2010,05,104000,W,039000,20130628,N,F,20150626,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+	sample = "0,"+input   # wish everyone started at one or zero...
 	status = " no decision, a bug"
-	print rread(csvfile,e,n)
-	element = rread(csvfile,e,n)
-	# print elementelement.isdigit()
-	# print alfadefs[n][6:-2]+"\t"+eval(alfadefs	[n])
-	name = alfadefs[n][6:-2]
-	# print "testing element number "+ str(n) + " as the " + name +"  "+ element
-	criteria = eval(alfadefs[n]).split(',')
-	# print element + "\t" + str(criteria)
+	mylist = sample.split(',')
+	#
+	for n in range(1,109):
+		element = mylist[n]
+		name = alfadefs[n][6:-2]
+		criteria = eval(alfadefs[n]).split(',')
+		aoran = criteria[4].strip()
+		# print aoran,
+		if criteria[3] == "O" or criteria[3] == "C" : status = "  o OK"
+		elif aoran == "AN" and  element.replace(" ", "").isalnum() and  len(element) <= int(criteria[0]): status = " an OK" 
+		elif not "SSN" in name and aoran ==  "N" and  element.isdigit() and len(element) <= int(criteria[0]): status = "  n OK" 
+		elif "SSN" in name and aoran ==  "N" and  element.isdigit() and len(element) == 9: status = "ssn OK" 
+		elif "SSN" in name and "NO" in element: status = "ssn OK" 
+		elif "Filler" in name: status = "ssn OK" 
+		elif "City" in name and  element.replace(" ", ""). isalnum() and  len(element) <= int(criteria[0]): status = " an OK" 
+		elif "Street" in name and  len(element) <= int(criteria[0]): status = " an OK" 
+		elif aoran ==  "A" and element.isalpha() and len(element) <= int(criteria[0]): status = "  a OK"
+		else:status = " Wrong!" 
+		# if not "OK" in status: print str(n) + "\t" + element + "\t" + str(len(element)) +"\t"+criteria[0] + "\t" + str(status) + "\t" + aoran + "\t" + alfadefs[n][6:-2]
+		# if "SSN" in name: print str(n) + "\t" + str(len(element)) +"\t"+eval(alfadefs	[n]) + "\t" + str(status) + "\t" + aoran + "\t" + alfadefs[n][6:-2]
+		if not "OK" in status: print str(n) + "\t" + str(len(element)) +"\t"+eval(alfadefs	[n]) + "\t" + str(status) + "\t" + aoran + "\t" + alfadefs[n][6:-2]
+
+# 
+#
+
+def tneval():
+	"""
+	Just tests the evaluator!!!
+	This is a general purpose evaluator.  How it works is that it knows the following:
+	Fieldname
+	length
+	start
+	stop
+	Required values "R", "O", or "C"
+	Type
+	It uses this information to check the current element and returns a pass/fail.
+	There is a sample element called oddly enough, sample
+	"""
+	sample="0,D1,975464835,George,,Washington,,,,F,,804 West 15th Street,,Laurel,MS,39440,US,20160626,19670526,20150626,20151123,,N,,,,,,,,,,,,,,,,,,,,,,,,,,Y,231302,2010,05,104000,W,039000,20130628,N,F,20150626,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"
+	# print sample
+	status = " no decision, a bug"
+	mylist = sample.split(',')
 	#
 	# is it required?
-	if criteria[3] == "O": 
-		# print "Optional - Ignore"
-		status = " OK"
-	# is it a number of proper length?
-	else:
-		# print "Element is either a 'C' or an 'R'"	
-		# note this version does not differentiate, just checks
-		# uses a trinairy e.g. 'Yes' if fruit == 'Apple' else 'No'
-		aoran = criteria[4].strip()
-		print criteria
-		print aoran+"\t"+element + "\t" + str(len(element)) + "\t" + str(int(criteria[0])) + "\t" + str(element.isdigit())
-		# status = " Wrong!" if aoran ==  "N" and len(element) == int(criteria[0]) and element.isdigit() else " OK"
-		# if aoran ==  "N": status = " OK"     if len(element) == int(criteria[0]) and element.isdigit() else " Wrong!"
-		# if aoran ==  "N" and  element.isdigit() : status = " OK"  if len(element) == int(criteria[0]) else " Wrong!"
-		if aoran ==  "N" and  element.isdigit(): status = "  n Wrong!" if len(element) != int(criteria[0]) else "  n OK"
-		if aoran == "AN" and  element.isalpha(): status = " an Wrong!" if len(element) >= int(criteria[0]) else " an OK"
-		if aoran ==  "A" and  element.isalpha(): status = "  a Wrong!" if len(element) >= int(criteria[0]) else "  a OK"
-	# 
-	#
-	status = name + status
-	# print status
-	return status
-		 
+	for n in range(1,110):
+		element = mylist[n]
+		# print element
+		# print alfadefs[n][6:-2]+"\t"+eval(alfadefs	[n])
+		name = alfadefs[n][6:-2]
+		# print "testing element number "+ str(n) + " as the " + name +"  "+ element
+		criteria = eval(alfadefs[n]).split(',')
+		# print str(criteria) + "\t" + element
+		print str(n) + "\t" + str(len(element)) + "\t" + alfadefs[n][6:-2]+"\t"+eval(alfadefs	[n])
+
+# 
+#
+
 
 # load line
 def csvln(file,n):
@@ -324,7 +328,7 @@ elif args['--testcsv'] or args['-c']:
     print "This routine is not yet operational but is used for testing"
     #T 
     poplst()
-    csvlt(csvfile)
+    testcsv()
     print args['<ifile>']+"  " + args['<logfile>']
 elif args['--testtab'] or args['-t']:
     print "You are at the testtab routine -"
