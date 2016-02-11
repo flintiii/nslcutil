@@ -1,5 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<script type="text/javascript">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><script type="text/javascript">
 var version = {major: 2, minor: 0, revision: 11, date: new Date("May 11, 2006"), extensions: {}};
 </script>
 <!--
@@ -32,16 +32,16 @@ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING 
 ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
 DAMAGE.
 -->
-<html>
+
 <!--<head>
-<base href="http://docbox.flint.com:8081/goddard/" />
+<base href="http://docbox.flint.com:8081/nslc/" />
 hack for Zope base tag-->
-<head>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15">
 <!--PRE-HEAD-START-->
-<link rel='alternate' type='application/rss+xml' title='RSS' href='index.xml'>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://docbox.flint.com:8081/index.xml">
 <!--PRE-HEAD-END-->
-<title>Goddard College</title>
+<title>nslcutil.py</title>
 <script type="text/javascript">
 
 // ---------------------------------------------------------------------------------
@@ -5189,7 +5189,834 @@ function setStylesheet(s,id)
 <!--POST-HEAD-START-->
 
 <!--POST-HEAD-END-->
-</head>
+
+<script type="text/javascript">
+  if(typeof zw == "undefined") var zw = {};
+  zw.loggedIn = true;
+  zw.anonEdit = false;
+  zw.ziddlyPath = 'http://docbox.flint.com:8081/ZiddlyWiki';
+  zw.isAdmin = true;
+  zw.latestTiddler = 145521970414;
+  zw.username = 'flint';
+  version.extensions.ZiddlyWiki = 4;
+</script>
+
+<style type="text/css">
+  #statusMessage {
+    position: fixed;
+    position: expression('absolute'); /* for IE */
+    display: none;
+    background-color: red;
+    color: white;
+    top: 3px;
+    right: 3px;
+    padding: 2px;
+    z-index: 100;
+  }
+</style>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://docbox.flint.com:8081/nslc?format=xml">
+<script type="text/javascript" src="2016-02-11_nslctiddler_files/ajax.js"></script>
+<script type="text/javascript" src="2016-02-11_nslctiddler_files/ziddly.js"></script>
+<style id="StyleSheetLayout" type="text/css">/***
+!Sections in this Tiddler:
+*Generic rules
+**Links styles
+**Link Exceptions
+*Header
+*Main menu
+*Sidebar
+**Sidebar options
+**Sidebar tabs
+*Message area
+*Popup
+*Tabs
+*Tiddler display
+**Viewer
+**Editor
+*Misc. rules
+!Generic Rules /%==============================================%/
+***/
+/*{{{*/
+body {
+	font-size: .75em;
+	font-family: arial,helvetica;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+
+h1,h2,h3,h4,h5 {
+	font-weight: bold;
+	text-decoration: none;
+	padding-left: 0.4em;
+}
+
+h1 {font-size: 1.35em;}
+h2 {font-size: 1.25em;}
+h3 {font-size: 1.1em;}
+h4 {font-size: 1em;}
+h5 {font-size: .9em;}
+
+hr {
+	height: 1px;
+}
+
+a{
+	text-decoration: none;
+}
+
+ol { list-style-type: decimal }
+ol ol { list-style-type: lower-alpha }
+ol ol ol { list-style-type: lower-roman }
+ol ol ol ol { list-style-type: decimal }
+ol ol ol ol ol { list-style-type: lower-alpha }
+ol ol ol ol ol ol { list-style-type: lower-roman }
+ol ol ol ol ol ol ol { list-style-type: decimal }
+/*}}}*/
+/***
+''General Link Styles'' /%-----------------------------------------------------------------------------%/
+***/
+/*{{{*/
+.externalLink {
+	text-decoration: underline;
+}
+
+.tiddlyLinkExisting {
+	font-weight: bold;
+}
+
+.tiddlyLinkNonExisting {
+	font-style: italic;
+}
+
+/* the 'a' is required for IE, otherwise it renders the whole tiddler a bold */
+a.tiddlyLinkNonExisting.shadow {
+	font-weight: bold;
+}
+/*}}}*/
+/***
+''Exceptions to common link styles'' /%------------------------------------------------------------------%/
+***/
+/*{{{*/
+
+#mainMenu .tiddlyLinkExisting, 
+#mainMenu .tiddlyLinkNonExisting,
+#sidebarTabs .tiddlyLinkExisting,
+#sidebarTabs .tiddlyLinkNonExisting{
+ font-weight: normal;
+ font-style: normal;
+}
+
+/*}}}*/
+/***
+!Header /%==================================================%/
+***/
+/*{{{*/
+
+.header {
+		position: relative;
+}
+
+.header a:hover {
+	background: transparent;
+}
+
+.headerShadow {
+	position: relative;
+	padding: 4.5em 0em 1em 1em;
+	left: -1px;
+	top: -1px;
+}
+
+.headerForeground {
+	position: absolute;
+	padding: 4.5em 0em 1em 1em;
+	left: 0px;
+	top: 0px;
+}
+
+.siteTitle {
+	font-size: 3em;
+}
+
+.siteSubtitle {
+	font-size: 1.2em;
+}
+
+/*}}}*/
+/***
+!Main menu /%==================================================%/
+***/
+/*{{{*/
+#mainMenu {
+	position: absolute;
+	left: 0;
+	width: 10em;
+	text-align: right;
+	line-height: 1.6em;
+	padding: 1.5em 0.5em 0.5em 0.5em;
+	font-size: 1.1em;
+}
+
+/*}}}*/
+/***
+!Sidebar rules /%==================================================%/
+***/
+/*{{{*/
+#sidebar {
+	position: absolute;
+	right: 3px;
+	width: 16em;
+	font-size: .9em;
+}
+/*}}}*/
+/***
+''Sidebar options'' /%----------------------------------------------------------------------------------%/
+***/
+/*{{{*/
+#sidebarOptions {
+	padding-top: 0.3em;
+}
+
+#sidebarOptions a {
+	margin: 0em 0.2em;
+	padding: 0.2em 0.3em;
+	display: block;
+}
+
+#sidebarOptions input {
+	margin: 0.4em 0.5em;
+}
+
+#sidebarOptions .sliderPanel {
+	margin-left: 1em;
+	padding: 0.5em;
+	font-size: .85em;
+}
+
+#sidebarOptions .sliderPanel a {
+	font-weight: bold;
+	display: inline;
+	padding: 0;
+}
+
+#sidebarOptions .sliderPanel input {
+	margin: 0 0 .3em 0;
+}
+/*}}}*/
+/***
+''Sidebar tabs'' /%-------------------------------------------------------------------------------------%/
+***/
+/*{{{*/
+
+#sidebarTabs .tabContents {
+	width: 15em;
+	overflow: hidden;
+}
+
+/*}}}*/
+/***
+!Message area /%==================================================%/
+***/
+/*{{{*/
+#messageArea {
+position:absolute; top:0; right:0; margin: 0.5em; padding: 0.5em;
+}
+
+*[id='messageArea'] {
+position:fixed !important; z-index:99;}
+
+.messageToolbar {
+display: block;
+text-align: right;
+}
+
+#messageArea a{
+	text-decoration: underline;
+}
+/*}}}*/
+/***
+!Popup /%==================================================%/
+***/
+/*{{{*/
+.popup {
+	font-size: .9em;
+	padding: 0.2em;
+	list-style: none;
+	margin: 0;
+}
+
+.popup hr {
+	display: block;
+	height: 1px;
+	width: auto;
+	padding: 0;
+	margin: 0.2em 0em;
+}
+
+.popup li.disabled {
+	padding: 0.2em;
+}
+
+.popup li a{
+	display: block;
+	padding: 0.2em;
+}
+/*}}}*/
+/***
+!Tabs /%==================================================%/
+***/
+/*{{{*/
+.tabset {
+	padding: 1em 0em 0em 0.5em;
+}
+
+.tab {
+	margin: 0em 0em 0em 0.25em;
+	padding: 2px;
+}
+
+.tabContents {
+	padding: 0.5em;
+}
+
+.tabContents ul, .tabContents ol {
+	margin: 0;
+	padding: 0;
+}
+
+.txtMainTab .tabContents li {
+	list-style: none;
+}
+
+.tabContents li.listLink {
+	 margin-left: .75em;
+}
+/*}}}*/
+/***
+!Tiddler display rules /%==================================================%/
+***/
+/*{{{*/
+#displayArea {
+	margin: 1em 17em 0em 14em;
+}
+
+
+.toolbar {
+	text-align: right;
+	font-size: .9em;
+	visibility: hidden;
+}
+
+.selected .toolbar {
+	visibility: visible;
+}
+
+.tiddler {
+	padding: 1em 1em 0em 1em;
+}
+
+.missing .viewer,.missing .title {
+	font-style: italic;
+}
+
+.title {
+	font-size: 1.6em;
+	font-weight: bold;
+}
+
+.missing .subtitle {
+ display: none;
+}
+
+.subtitle {
+	font-size: 1.1em;
+}
+
+/* I'm not a fan of how button looks in tiddlers... */
+.tiddler .button {
+	padding: 0.2em 0.4em;
+}
+
+.tagging {
+margin: 0.5em 0.5em 0.5em 0;
+float: left;
+display: none;
+}
+
+.isTag .tagging {
+display: block;
+}
+
+.tagged {
+margin: 0.5em;
+float: right;
+}
+
+.tagging, .tagged {
+font-size: 0.9em;
+padding: 0.25em;
+}
+
+.tagging ul, .tagged ul {
+list-style: none;margin: 0.25em;
+padding: 0;
+}
+
+.tagClear {
+clear: both;
+}
+
+.footer {
+	font-size: .9em;
+}
+
+.footer li {
+display: inline;
+}
+/***
+''The viewer is where the tiddler content is displayed'' /%------------------------------------------------%/
+***/
+/*{{{*/
+* html .viewer pre {
+	width: 99%;
+	padding: 0 0 1em 0;
+}
+
+.viewer {
+	line-height: 1.4em;
+	padding-top: 0.5em;
+}
+
+.viewer .button {
+	margin: 0em 0.25em;
+	padding: 0em 0.25em;
+}
+
+.viewer blockquote {
+	line-height: 1.5em;
+	padding-left: 0.8em;
+	margin-left: 2.5em;
+}
+
+.viewer ul, .viewer ol{
+	margin-left: 0.5em;
+	padding-left: 1.5em;
+}
+
+.viewer table {
+	border-collapse: collapse;
+	margin: 0.8em 1.0em;
+}
+
+.viewer th, .viewer td, .viewer tr,.viewer caption{
+	padding: 3px;
+}
+
+.viewer pre {
+	padding: 0.5em;
+	margin-left: 0.5em;
+	font-size: 1.2em;
+	line-height: 1.4em;
+	overflow: auto;
+}
+
+.viewer code {
+	font-size: 1.2em;
+	line-height: 1.4em;
+}
+/*}}}*/
+/***
+''The editor replaces the viewer in the tiddler'' /%------------------------------------------------%/
+***/
+/*{{{*/
+.editor {
+font-size: 1.1em;
+}
+
+.editor input, .editor textarea {
+	display: block;
+	width: 100%;
+	font: inherit;
+}
+
+.editorFooter {
+	padding: 0.25em 0em;
+	font-size: .9em;
+}
+
+.editorFooter .button {
+padding-top: 0px; padding-bottom: 0px;}
+
+.fieldsetFix {border: 0;
+padding: 0;
+margin: 1px 0px 1px 0px;
+}
+/*}}}*/
+/***
+!Misc rules /%==================================================%/
+***/
+/*{{{*/
+.sparkline {
+	line-height: 1em;
+}
+
+.sparktick {
+	outline: 0;
+}
+
+.zoomer {
+	font-size: 1.1em;
+	position: absolute;
+	padding: 1em;
+}
+
+.cascade {
+	font-size: 1.1em;
+	position: absolute;
+	overflow: hidden;
+}
+/*}}}*/#ZiddlyFormats,#ZiddlyPowered{margin:5px}</style><style id="StyleSheetColors" type="text/css">/***
+!Colors Used
+*@@bgcolor(#8cf): #8cf - Background blue@@
+*@@bgcolor(#18f): #18f - Top blue@@
+*@@bgcolor(#04b): #04b - Mid blue@@
+*@@bgcolor(#014):color(#fff): #014 - Bottom blue@@
+*@@bgcolor(#ffc): #ffc - Bright yellow@@
+*@@bgcolor(#fe8): #fe8 - Highlight yellow@@
+*@@bgcolor(#db4): #db4 - Background yellow@@
+*@@bgcolor(#841): #841 - Border yellow@@
+*@@bgcolor(#703):color(#fff): #703 - Title red@@
+*@@bgcolor(#866): #866 - Subtitle grey@@
+!Generic Rules /%==============================================%/
+***/
+/*{{{*/
+body {
+	background: #fff;
+	color: #000;
+}
+
+a{
+	color: #04b;
+}
+
+a:hover{
+	background: #04b;
+	color: #fff;
+}
+
+a img{
+	border: 0;
+}
+
+h1,h2,h3,h4,h5 {
+	color: #703;
+	background: #8cf;
+}
+
+.button {
+	color: #014;
+	border: 1px solid #fff;
+}
+
+.button:hover {
+	color: #014;
+	background: #fe8;
+	border-color: #db4;
+}
+
+.button:active {
+	color: #fff;
+	background: #db4;
+	border: 1px solid #841;
+}
+
+/*}}}*/
+/***
+!Header /%==================================================%/
+***/
+/*{{{*/
+.header {
+	background: #04b;
+}
+
+.headerShadow {
+	color: #000;
+}
+
+.headerShadow a {
+	font-weight: normal;
+	color: #000;
+}
+
+.headerForeground {
+	color: #fff;
+}
+
+.headerForeground a {
+	font-weight: normal;
+	color: #8cf;
+}
+
+/*}}}*/
+/***
+!General tabs /%=================================================%/
+***/
+/*{{{*/
+
+.tabSelected{
+	color: #014;
+	background: #eee;
+	border-left: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+}
+
+.tabUnselected {
+	color: #fff;
+	background: #999;
+}
+
+.tabContents {
+	color: #014;
+	background: #eee;
+	border: 1px solid #ccc;
+}
+
+.tabContents .button {
+	 border: 0;}
+
+/*}}}*/
+/***
+!Sidebar options /%=================================================%/
+~TiddlyLinks and buttons are treated identically in the sidebar and slider panel
+***/
+/*{{{*/
+#sidebar {
+}
+
+#sidebarOptions input {
+	border: 1px solid #04b;
+}
+
+#sidebarOptions .sliderPanel {
+	background: #8cf;
+}
+
+#sidebarOptions .sliderPanel a {
+	border: none;
+	color: #04b;
+}
+
+#sidebarOptions .sliderPanel a:hover {
+	color: #fff;
+	background: #04b;
+}
+
+#sidebarOptions .sliderPanel a:active {
+	color: #04b;
+	background: #fff;
+}
+/*}}}*/
+/***
+!Message Area /%=================================================%/
+***/
+/*{{{*/
+#messageArea {
+	border: 1px solid #841;
+	background: #db4;
+	color: #014;
+}
+
+#messageArea .button {
+	padding: 0.2em 0.2em 0.2em 0.2em;
+	color: #014;
+	background: #fff;
+}
+
+/*}}}*/
+/***
+!Popup /%=================================================%/
+***/
+/*{{{*/
+.popup {
+	background: #18f;
+	border: 1px solid #04b;
+}
+
+.popup hr {
+	color: #014;
+	background: #014;
+	border-bottom: 1px;
+}
+
+.popup li.disabled {
+	color: #04b;
+}
+
+.popup li a, .popup li a:visited {
+	color: #eee;
+	border: none;
+}
+
+.popup li a:hover {
+	background: #014;
+	color: #fff;
+	border: none;
+}
+/*}}}*/
+/***
+!Tiddler Display /%=================================================%/
+***/
+/*{{{*/
+.tiddler .defaultCommand {
+ font-weight: bold;
+}
+
+.shadow .title {
+	color: #866;
+}
+
+.title {
+	color: #703;
+}
+
+.subtitle {
+	color: #866;
+}
+
+.toolbar {
+	color: #04b;
+}
+
+.tagging, .tagged {
+	border: 1px solid #eee;
+	background-color: #eee;
+}
+
+.selected .tagging, .selected .tagged {
+	background-color: #ddd;
+	border: 1px solid #bbb;
+}
+
+.tagging .listTitle, .tagged .listTitle {
+	color: #014;
+}
+
+.tagging .button, .tagged .button {
+		border: none;
+}
+
+.footer {
+	color: #ddd;
+}
+
+.selected .footer {
+	color: #888;
+}
+
+.sparkline {
+	background: #8cf;
+	border: 0;
+}
+
+.sparktick {
+	background: #014;
+}
+
+.errorButton {
+	color: #ff0;
+	background: #f00;
+}
+
+.cascade {
+	background: #eef;
+	color: #aac;
+	border: 1px solid #aac;
+}
+
+.imageLink, #displayArea .imageLink {
+	background: transparent;
+}
+
+/*}}}*/
+/***
+''The viewer is where the tiddler content is displayed'' /%------------------------------------------------%/
+***/
+/*{{{*/
+
+.viewer .listTitle {list-style-type: none; margin-left: -2em;}
+
+.viewer .button {
+	border: 1px solid #db4;
+}
+
+.viewer blockquote {
+	border-left: 3px solid #666;
+}
+
+.viewer table {
+	border: 2px solid #333;
+}
+
+.viewer th, thead td {
+	background: #db4;
+	border: 1px solid #666;
+	color: #fff;
+}
+
+.viewer td, .viewer tr {
+	border: 1px solid #666;
+}
+
+.viewer pre {
+	border: 1px solid #fe8;
+	background: #ffc;
+}
+
+.viewer code {
+	color: #703;
+}
+
+.viewer hr {
+	border: 0;
+	border-top: dashed 1px #666;
+	color: #666;
+}
+
+.highlight, .marked {
+	background: #fe8;
+}
+/*}}}*/
+/***
+''The editor replaces the viewer in the tiddler'' /%------------------------------------------------%/
+***/
+/*{{{*/
+.editor input {
+	border: 1px solid #04b;
+}
+
+.editor textarea {
+	border: 1px solid #04b;
+	width: 100%;
+}
+
+.editorFooter {
+	color: #aaa;
+}
+
+/*}}}*/#ZiddlyFormats,#ZiddlyPowered,#ZiddlyFormats a,#ZiddlyPowered a{color:#fff}</style><style id="StyleSheet" type="text/css">/***
+Place your custom CSS here
+***/
+/*{{{*/
+
+/*}}}*/
+</style><style id="StyleSheetPrint" type="text/css">@media print {
+#mainMenu, #sidebar, #messageArea {display: none ! important;}
+#displayArea {margin: 1em 1em 0em 1em;}
+/* Fixes a feature in Firefox 1.5.0.2 where print preview displays the noscript content */
+noscript {display:none;}
+}</style></head>
 <body onload="main();" onunload="if(window.checkUnsavedChanges) checkUnsavedChanges();" onbeforeunload="if(window.confirmExit) return confirmExit();">
 <!--PRE-BODY-START-->
 <!--PRE-BODY-END-->
@@ -5201,28 +6028,500 @@ function setStylesheet(s,id)
 		}
 	</script>
 	<div id="copyright">
-	Welcome to TiddlyWiki by Jeremy Ruston, Copyright &copy; 2005 Osmosoft Limited
+	Welcome to TiddlyWiki by Jeremy Ruston, Copyright © 2005 Osmosoft Limited
 	</div>
 	<noscript>
 		<div id="javascriptWarning">This page requires JavaScript to function properly</div>
 	</noscript>
-	<div id="saveTest"></div>
-	<div id="contentWrapper"></div>
+	<div id="saveTest">savetest</div>
+	<div id="contentWrapper"><div style="position: relative; overflow: hidden; z-index: 0;" class="header" macro="gradient vert #18f #04b">
+<div class="headerShadow">
+<span class="siteTitle" refresh="content" tiddler="SiteTitle">nslcutil.py</span>&nbsp;
+<span class="siteSubtitle" refresh="content" tiddler="SiteSubtitle">National Student Clearinghouse Enrollment Transmission checking program</span>
+</div>
+<div class="headerForeground">
+<span class="siteTitle" refresh="content" tiddler="SiteTitle">nslcutil.py</span>&nbsp;
+<span class="siteSubtitle" refresh="content" tiddler="SiteSubtitle">National Student Clearinghouse Enrollment Transmission checking program</span>
+</div>
+<div style="position: absolute; left: 0px; top: 0%; width: 100%; height: 101%; z-index: -1; background-color: rgb(17, 136, 255);"></div><div style="position: absolute; left: 0px; top: 2%; width: 100%; height: 99%; z-index: -1; background-color: rgb(16, 134, 253);"></div><div style="position: absolute; left: 0px; top: 4%; width: 100%; height: 97%; z-index: -1; background-color: rgb(16, 133, 252);"></div><div style="position: absolute; left: 0px; top: 6%; width: 100%; height: 95%; z-index: -1; background-color: rgb(15, 131, 250);"></div><div style="position: absolute; left: 0px; top: 8%; width: 100%; height: 93%; z-index: -1; background-color: rgb(15, 130, 249);"></div><div style="position: absolute; left: 0px; top: 10%; width: 100%; height: 91%; z-index: -1; background-color: rgb(15, 129, 248);"></div><div style="position: absolute; left: 0px; top: 12%; width: 100%; height: 89%; z-index: -1; background-color: rgb(14, 127, 246);"></div><div style="position: absolute; left: 0px; top: 14%; width: 100%; height: 87%; z-index: -1; background-color: rgb(14, 126, 245);"></div><div style="position: absolute; left: 0px; top: 16%; width: 100%; height: 85%; z-index: -1; background-color: rgb(14, 125, 244);"></div><div style="position: absolute; left: 0px; top: 18%; width: 100%; height: 83%; z-index: -1; background-color: rgb(13, 123, 242);"></div><div style="position: absolute; left: 0px; top: 20%; width: 100%; height: 81%; z-index: -1; background-color: rgb(13, 122, 241);"></div><div style="position: absolute; left: 0px; top: 22%; width: 100%; height: 79%; z-index: -1; background-color: rgb(13, 121, 240);"></div><div style="position: absolute; left: 0px; top: 24%; width: 100%; height: 77%; z-index: -1; background-color: rgb(12, 119, 238);"></div><div style="position: absolute; left: 0px; top: 26%; width: 100%; height: 75%; z-index: -1; background-color: rgb(12, 118, 237);"></div><div style="position: absolute; left: 0px; top: 28%; width: 100%; height: 73%; z-index: -1; background-color: rgb(12, 116, 235);"></div><div style="position: absolute; left: 0px; top: 30%; width: 100%; height: 71%; z-index: -1; background-color: rgb(11, 115, 234);"></div><div style="position: absolute; left: 0px; top: 32%; width: 100%; height: 69%; z-index: -1; background-color: rgb(11, 114, 233);"></div><div style="position: absolute; left: 0px; top: 34%; width: 100%; height: 67%; z-index: -1; background-color: rgb(11, 112, 231);"></div><div style="position: absolute; left: 0px; top: 36%; width: 100%; height: 65%; z-index: -1; background-color: rgb(10, 111, 230);"></div><div style="position: absolute; left: 0px; top: 38%; width: 100%; height: 63%; z-index: -1; background-color: rgb(10, 110, 229);"></div><div style="position: absolute; left: 0px; top: 40%; width: 100%; height: 61%; z-index: -1; background-color: rgb(10, 108, 227);"></div><div style="position: absolute; left: 0px; top: 42%; width: 100%; height: 59%; z-index: -1; background-color: rgb(9, 107, 226);"></div><div style="position: absolute; left: 0px; top: 44%; width: 100%; height: 57%; z-index: -1; background-color: rgb(9, 106, 225);"></div><div style="position: absolute; left: 0px; top: 46%; width: 100%; height: 55%; z-index: -1; background-color: rgb(9, 104, 223);"></div><div style="position: absolute; left: 0px; top: 48%; width: 100%; height: 53%; z-index: -1; background-color: rgb(8, 103, 222);"></div><div style="position: absolute; left: 0px; top: 50%; width: 100%; height: 51%; z-index: -1; background-color: rgb(8, 102, 221);"></div><div style="position: absolute; left: 0px; top: 52%; width: 100%; height: 49%; z-index: -1; background-color: rgb(8, 100, 219);"></div><div style="position: absolute; left: 0px; top: 54%; width: 100%; height: 47%; z-index: -1; background-color: rgb(7, 99, 218);"></div><div style="position: absolute; left: 0px; top: 56%; width: 100%; height: 45%; z-index: -1; background-color: rgb(7, 97, 216);"></div><div style="position: absolute; left: 0px; top: 58%; width: 100%; height: 43%; z-index: -1; background-color: rgb(7, 96, 215);"></div><div style="position: absolute; left: 0px; top: 60%; width: 100%; height: 41%; z-index: -1; background-color: rgb(6, 95, 214);"></div><div style="position: absolute; left: 0px; top: 62%; width: 100%; height: 39%; z-index: -1; background-color: rgb(6, 93, 212);"></div><div style="position: absolute; left: 0px; top: 64%; width: 100%; height: 37%; z-index: -1; background-color: rgb(6, 92, 211);"></div><div style="position: absolute; left: 0px; top: 66%; width: 100%; height: 35%; z-index: -1; background-color: rgb(5, 91, 210);"></div><div style="position: absolute; left: 0px; top: 68%; width: 100%; height: 33%; z-index: -1; background-color: rgb(5, 89, 208);"></div><div style="position: absolute; left: 0px; top: 70%; width: 100%; height: 31%; z-index: -1; background-color: rgb(5, 88, 207);"></div><div style="position: absolute; left: 0px; top: 72%; width: 100%; height: 29%; z-index: -1; background-color: rgb(4, 87, 206);"></div><div style="position: absolute; left: 0px; top: 74%; width: 100%; height: 27%; z-index: -1; background-color: rgb(4, 85, 204);"></div><div style="position: absolute; left: 0px; top: 76%; width: 100%; height: 25%; z-index: -1; background-color: rgb(4, 84, 203);"></div><div style="position: absolute; left: 0px; top: 78%; width: 100%; height: 23%; z-index: -1; background-color: rgb(3, 82, 201);"></div><div style="position: absolute; left: 0px; top: 80%; width: 100%; height: 21%; z-index: -1; background-color: rgb(3, 81, 200);"></div><div style="position: absolute; left: 0px; top: 82%; width: 100%; height: 19%; z-index: -1; background-color: rgb(3, 80, 199);"></div><div style="position: absolute; left: 0px; top: 84%; width: 100%; height: 17%; z-index: -1; background-color: rgb(2, 78, 197);"></div><div style="position: absolute; left: 0px; top: 86%; width: 100%; height: 15%; z-index: -1; background-color: rgb(2, 77, 196);"></div><div style="position: absolute; left: 0px; top: 88%; width: 100%; height: 13%; z-index: -1; background-color: rgb(2, 76, 195);"></div><div style="position: absolute; left: 0px; top: 90%; width: 100%; height: 11%; z-index: -1; background-color: rgb(1, 74, 193);"></div><div style="position: absolute; left: 0px; top: 92%; width: 100%; height: 9%; z-index: -1; background-color: rgb(1, 73, 192);"></div><div style="position: absolute; left: 0px; top: 94%; width: 100%; height: 7%; z-index: -1; background-color: rgb(1, 72, 191);"></div><div style="position: absolute; left: 0px; top: 96%; width: 100%; height: 5%; z-index: -1; background-color: rgb(0, 70, 189);"></div><div style="position: absolute; left: 0px; top: 98%; width: 100%; height: 3%; z-index: -1; background-color: rgb(0, 69, 188);"></div><div style="position: absolute; left: 0px; top: 100%; width: 100%; height: 1%; z-index: -1; background-color: rgb(0, 68, 187);"></div></div>
+<div id="mainMenu" refresh="content" tiddler="MainMenu"><a tiddlylink="GettingStarted" refresh="link" class="tiddlyLink tiddlyLinkNonExisting shadow" title="The tiddler 'GettingStarted' doesn't yet exist, but has a pre-defined shadow value" href="javascript:;">GettingStarted</a></div>
+<div id="sidebar">
+<div id="sidebarOptions" refresh="content" tiddler="SideBarOptions"><a class="button" title="Search this TiddlyWiki" href="javascript:;">search</a><input lastsearchtext="" autocomplete="off" accesskey="F" size="15" type="text"><a class="button" title="Close all displayed tiddlers (except any that are being edited)" href="javascript:;">close all</a><a class="button" title="Link to an URL that retrieves all the currently displayed tiddlers" href="javascript:;">permaview</a><a accesskey="N" class="button" title="Create a new tiddler" href="javascript:;">new tiddler</a><a params="DD MMM YYYY" journaltitle="11 February 2016" accesskey="J" class="button" title="Create a new tiddler from the current date and time" href="javascript:;">new journal</a><a class="button" title="Change advanced options" href="javascript:;">options</a><div style="display: block;" cookie="chkSliderOptionsPanel" class="sliderPanel">These <a tiddlylink="InterfaceOptions" refresh="link" class="tiddlyLink tiddlyLinkNonExisting missing" title="The tiddler 'InterfaceOptions' doesn't yet exist" href="javascript:;">InterfaceOptions</a> are saved in your browser<br><br><input option="chkRegExpSearch" type="checkbox"> <a tiddlylink="RegExpSearch" refresh="link" class="tiddlyLink tiddlyLinkNonExisting missing" title="The tiddler 'RegExpSearch' doesn't yet exist" href="javascript:;">RegExpSearch</a><br><input option="chkCaseSensitiveSearch" type="checkbox"> <a tiddlylink="CaseSensitiveSearch" refresh="link" class="tiddlyLink tiddlyLinkNonExisting missing" title="The tiddler 'CaseSensitiveSearch' doesn't yet exist" href="javascript:;">CaseSensitiveSearch</a><br><input checked="checked" option="chkAnimate" type="checkbox"> <a tiddlylink="EnableAnimations" refresh="link" class="tiddlyLink tiddlyLinkNonExisting missing" title="The tiddler 'EnableAnimations' doesn't yet exist" href="javascript:;">EnableAnimations</a><br><br>See <a tiddlylink="AdvancedOptions" refresh="link" class="tiddlyLink tiddlyLinkNonExisting shadow" title="The tiddler 'AdvancedOptions' doesn't yet exist, but has a pre-defined shadow value" href="javascript:;">AdvancedOptions</a></div><a class="button" title="Export to a TiddlyWiki file" href="javascript:;">save to file</a><a tiddlylink="ImportTiddlyWiki" refresh="link" class="button" title="Import a TiddlyWiki file" href="javascript:;">update from file</a><a tiddlylink="flint" refresh="link" class="tiddlyLink tiddlyLinkNonExisting" title="The tiddler 'flint' doesn't yet exist" href="javascript:;">flint (logged in)</a></div>
+<div id="sidebarTabs" refresh="content" force="true" tiddler="SideBarTabs"><div class="txtMainTab"><div cookie="txtMainTab" class="tabset"><a content="TabTimeline" tab="Timeline" class="tab tabSelected" title="Timeline" href="javascript:;">Timeline</a><a content="TabAll" tab="All" class="tab tabUnselected" title="All tiddlers" href="javascript:;">All</a><a content="TabTags" tab="Tags" class="tab tabUnselected" title="All tags" href="javascript:;">Tags</a><a content="TabMore" tab="More" class="tab tabUnselected" title="More lists" href="javascript:;">More</a></div><div class="tabContents"><ul><li class="listTitle">11 February 2016</li><li class="listLink"><a tiddlylink="NSLC_upload_step-by-step_Using_nslcutility.py" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLC_upload_step-by-step_Using_nslcutility.py - flint, 2/11/2016, 2:41:00 PM" href="javascript:;">NSLC_upload_step-by-step_Using_nslcutility.py</a></li><li class="listLink"><a tiddlylink="NSLC_upload_step-by-step_Manual" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLC_upload_step-by-step_Manual - flint, 2/11/2016, 2:22:00 PM" href="javascript:;">NSLC_upload_step-by-step_Manual</a></li></ul><ul><li class="listTitle">8 February 2016</li><li class="listLink"><a tiddlylink="Development " refresh="link" class="tiddlyLink tiddlyLinkExisting" title="Development  - flint, 2/8/2016, 11:00:00 AM" href="javascript:;">Development </a></li></ul><ul><li class="listTitle">4 February 2016</li><li class="listLink"><a tiddlylink="NSLCRequirements" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCRequirements - flint, 2/4/2016, 12:10:00 PM" href="javascript:;">NSLCRequirements</a></li></ul><ul><li class="listTitle">27 January 2016</li><li class="listLink"><a tiddlylink="overview" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="overview - flint, 1/27/2016, 10:34:00 AM" href="javascript:;">overview</a></li></ul><ul><li class="listTitle">25 January 2016</li><li class="listLink"><a tiddlylink="NewProgram" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NewProgram - flint, 1/25/2016, 10:43:00 AM" href="javascript:;">NewProgram</a></li><li class="listLink"><a tiddlylink="NSLCactivities" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCactivities - flint, 1/25/2016, 10:40:00 AM" href="javascript:;">NSLCactivities</a></li></ul><ul><li class="listTitle">17 January 2016</li><li class="listLink"><a tiddlylink="SiteSubtitle" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="SiteSubtitle - flint, 1/17/2016, 10:48:00 AM" href="javascript:;">SiteSubtitle</a></li><li class="listLink"><a tiddlylink="DefaultTiddlers" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="DefaultTiddlers - flint, 1/17/2016, 10:48:00 AM" href="javascript:;">DefaultTiddlers</a></li><li class="listLink"><a tiddlylink="SiteTitle" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="SiteTitle - flint, 1/17/2016, 10:46:00 AM" href="javascript:;">SiteTitle</a></li></ul><ul><li class="listTitle">15 January 2016</li><li class="listLink"><a tiddlylink="NSLCupload" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCupload - flint, 1/15/2016, 1:34:00 PM" href="javascript:;">NSLCupload</a></li></ul><ul><li class="listTitle">12 January 2016</li><li class="listLink"><a tiddlylink="NSLCtransferScript" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCtransferScript - flint, 1/12/2016, 9:02:00 AM" href="javascript:;">NSLCtransferScript</a></li></ul><ul><li class="listTitle">10 January 2016</li><li class="listLink"><a tiddlylink="NSLCreadExcellSheet" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCreadExcellSheet - flint, 1/10/2016, 3:54:00 PM" href="javascript:;">NSLCreadExcellSheet</a></li></ul><ul><li class="listTitle">9 January 2016</li><li class="listLink"><a tiddlylink="NSLCNewDataFlow" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCNewDataFlow - flint, 1/9/2016, 10:01:00 AM" href="javascript:;">NSLCNewDataFlow</a></li></ul><ul><li class="listTitle">8 January 2016</li><li class="listLink"><a tiddlylink="NSLCFileCompare" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCFileCompare - flint, 1/8/2016, 1:39:00 PM" href="javascript:;">NSLCFileCompare</a></li></ul><ul><li class="listTitle">30 December 2015</li><li class="listLink"><a tiddlylink="NSLCdataAnalysis" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCdataAnalysis - flint, 12/30/2015, 11:52:00 AM" href="javascript:;">NSLCdataAnalysis</a></li><li class="listLink"><a tiddlylink="NSLCdata" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCdata - flint, 12/30/2015, 10:54:00 AM" href="javascript:;">NSLCdata</a></li><li class="listLink"><a tiddlylink="NSLCGoogleScript" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCGoogleScript - flint, 12/30/2015, 9:49:00 AM" href="javascript:;">NSLCGoogleScript</a></li></ul><ul><li class="listTitle">27 December 2015</li><li class="listLink"><a tiddlylink="NSLCsources" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCsources - flint, 12/27/2015, 5:11:00 PM" href="javascript:;">NSLCsources</a></li></ul><ul><li class="listTitle">11 December 2015</li><li class="listLink"><a tiddlylink="sis.goddard.eduDetails" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="sis.goddard.eduDetails - flint, 12/11/2015, 2:42:00 PM" href="javascript:;">sis.goddard.eduDetails</a></li></ul><ul><li class="listTitle">8 December 2015</li><li class="listLink"><a tiddlylink="NSLC" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLC - flint, 12/8/2015, 8:47:00 AM" href="javascript:;">NSLC</a></li></ul><ul><li class="listTitle">5 December 2015</li><li class="listLink"><a tiddlylink="NSLCproposedDataFlow" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCproposedDataFlow - flint, 12/5/2015, 3:05:00 PM" href="javascript:;">NSLCproposedDataFlow</a></li></ul><ul><li class="listTitle">4 December 2015</li><li class="listLink"><a tiddlylink="NSLCcurrentDataFlow" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCcurrentDataFlow - flint, 12/4/2015, 3:14:00 PM" href="javascript:;">NSLCcurrentDataFlow</a></li><li class="listLink"><a tiddlylink="nslc.php" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="nslc.php - flint, 12/4/2015, 2:21:00 PM" href="javascript:;">nslc.php</a></li></ul><ul><li class="listTitle">12 November 2013</li><li class="listLink"><a tiddlylink="manual" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="manual - flint, 11/12/2013, 3:18:00 PM" href="javascript:;">manual</a></li><li class="listLink"><a tiddlylink="existing" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="existing - flint, 11/12/2013, 3:16:00 PM" href="javascript:;">existing</a></li></ul><ul><li class="listTitle">26 January 2007</li><li class="listLink"><a tiddlylink="FormattingInstructions" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="FormattingInstructions - flint, 1/26/2007, 1:46:00 PM" href="javascript:;">FormattingInstructions</a></li><li class="listLink"><a tiddlylink="Basic Editing" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="Basic Editing - flint, 1/26/2007, 1:45:00 PM" href="javascript:;">Basic Editing</a></li></ul></div></div></div>
+<div id="ZiddlyFormats" refresh="content" tiddler="ZiddlyFormats">Formats: <a target="_blank" title="External link to ?format=xml" href="http://docbox.flint.com:8081/nslc?format=xml" class="externalLink">XML</a> | <a target="_blank" title="External link to ?format=yaml" href="http://docbox.flint.com:8081/nslc?format=yaml" class="externalLink">YAML</a></div>
+<div id="ZiddlyPowered" refresh="content" tiddler="ZiddlyPowered">Powered by <a target="_blank" title="External link to http://ziddlywiki.com" href="http://ziddlywiki.com/" class="externalLink">ZiddlyWiki</a></div>
+</div>
+<div id="displayArea">
+<div id="messageArea"></div>
+<div id="tiddlerDisplay"><div template="ViewTemplate" tiddler="overview" tags="" id="tiddleroverview" class="tiddler"><div class="toolbar" macro="toolbar -closeTiddler closeOthers +editTiddler permalink references revisions jump"><a tiddler="overview" commandname="closeTiddler" class="button cancelCommand" title="Close this tiddler" href="javascript:;">close</a><a tiddler="overview" commandname="closeOthers" class="button" title="Close all other tiddlers" href="javascript:;">close others</a><a tiddler="overview" commandname="editTiddler" class="button defaultCommand" title="Edit this tiddler" href="javascript:;">edit</a><a tiddler="overview" commandname="permalink" class="button" title="Permalink for this tiddler" href="javascript:;">permalink</a><a tiddler="overview" commandname="references" class="button" title="Show tiddlers that link to this one" href="javascript:;">references</a><a tiddler="overview" commandname="revisions" class="button" title="View another revision of this tiddler" href="javascript:;">revisions</a><a tiddler="overview" commandname="jump" class="button" title="Jump to another open tiddler" href="javascript:;">jump</a></div>
+<div class="title" macro="view title">overview</div>
+<div class="subtitle"><span macro="view modifier link"><a tiddlylink="flint" refresh="link" class="tiddlyLink tiddlyLinkNonExisting" title="The tiddler 'flint' doesn't yet exist" href="javascript:;">flint</a></span>, <span macro="view modified date [[DD MMM YYYY]]">27 January 2016</span> (created <span macro="view created date [[DD MMM YYYY]]">17 January 2016</span>)</div>
+<div class="tagging" macro="tagging"><ul title="List of tiddlers tagged with 'overview'"><li class="listTitle">not tagging</li></ul></div>
+<div class="tagged" macro="tags"><ul><li class="listTitle">no tags</li></ul></div>
+<div class="viewer" macro="view text wikified">This is based upon <a target="_blank" title="External link to https://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf" href="https://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf" class="externalLink">the Enrollment Report Programming and TestingGuide </a><br><br><br><a tiddlylink="NSLCRequirements" refresh="link" class="tiddlyLink tiddlyLinkExisting" title="NSLCRequirements - flint, 2/4/2016, 12:10:00 PM" href="javascript:;">Functional Requirements</a></div>
+<div class="tagClear"></div></div></div>
+</div></div>
 	<div id="contentStash"></div>
-	<div id="storeArea"><div tiddler="Basic Editing" modifier="flint" modified="200701261845" created="200701261845" tags="">|!Punctuation|!Location|!Function|\n|{{{@@...@@}}}|surrounding text|@@highlighted text@@|\n|{{{//...//}}}|surrounding text|//italicized text//|\n|{{{==...==}}}|surrounding text|==strikethrough text==|\n|{{{''...''}}}|surrounding text|''boldfaced text''|\n|{{{__...__}}}|surrounding text|__underlined text__|\n|{{{[[text|url]]}}}|around text/url pair|[[text|http://gri.gallaudet.edu/]] link to url|\n|{{{ {...} }}}|''__tripled__'' surrounding text|{{{in-line literal text}}}|\n|{{{ {...} }}}|''__tripled__'' surrounding ''__lines__''|literal block|\n|{{{&lt;&lt;&lt;}}}|surrounding ''__lines__''|blockquotes|\n|{{{!}}}|at start of line|subheading|\n|{{{|...|...|}}}|line sectioned by vertical bars|table row|\n|{{{!}}}|in a table|!table heading|\n|{{{----}}}|alone on line|horizontal rule|\n|{{{*}}}|at start of line|bulleted list item|\n|{{{#}}}|at start of line|numbered list item|\nsource: Kevin Cole, January 2007</div>
-<div tiddler="sis.goddard.eduDetails" modifier="flint" modified="201512111942" created="201510161756" tags="">As of Wednesday, October 28, 2015\n\nAll ssh signins from outside goddard net arrive as 192.168.1.1\n\n[[activate.goddard.edu|https://activate.goddard.edu/]]\n\nis how we log in to create a new account\n\nAs of Thursday, October 22, 2nslc015 09:51 AM\n{{{\n 09:50:04 up 204 days,  1:08,  2 users,  load average: 0.22, 0.31, 0.62\n}}}\n\n[[LVM Guidance |https://www.rootusers.com/how-to-increase-the-size-of-a-linux-lvm-by-adding-a-new-disk/]]\n\n{{{\nStarting Nmap 6.40 ( http://nmap.org ) at 2015-10-16 13:55 EDT\nNmap scan report for sis.goddard.edu (207.136.210.8)\nHost is up (0.0037s latency).\nrDNS record for 207.136.210.8: host8.goddard3.cust.sover.net\nNot shown: 996 filtered ports\nPORT    STATE SERVICE\n22/tcp  open  ssh\n80/tcp  open  http\n443/tcp open  https\n636/tcp open  ldapssl\n}}}\n\n\n\n{{{\nroot@sis:~# df -h\nFilesystem                                   Size  Used Avail Use% Mounted on\n/dev/mapper/sis-root                          11G  6.6G  3.8G  64% /\nudev                                         363M  4.0K  363M   1% /dev\ntmpfs                                         75M  268K   75M   1% /run\nnone                                         5.0M     0  5.0M   0% /run/lock\nnone                                         372M     0  372M   0% /run/shm\n/dev/sda1                                    228M   25M  192M  12% /boot\n//fileserver.campus.goddard.edu/id_photos    700G  461G  240G  66% /photos\n//fileserver.campus.goddard.edu/SIS_scans    700G  461G  240G  66% /scans\n//fileserver.campus.goddard.edu/SIS_uploads  700G  461G  240G  66% /uploads\n//fileserver.campus.goddard.edu/id_photos    700G  461G  240G  66% /photo_dir\n\n}}}\n\n\n\n{{{\nroot@sis:~# fdisk -l\n\nDisk /dev/sda: 23.6 GB, 23622320128 bytes\n255 heads, 63 sectors/track, 2871 cylinders, total 46137344 sectors\nUnits = sectors of 1 * 512 = 512 bytes\nSector size (logical/physical): 512 bytes / 512 bytes\nI/O size (minimum/optimal): 512 bytes / 512 bytes\nDisk identifier: 0x00057b03\n\n   Device Boot      Start         End      Blocks   Id  System\n/dev/sda1   *        2048      499711      248832   83  Linux\n/dev/sda2          501758    25163775    12331009    5  Extended\n/dev/sda5          501760    25163775    12331008   8e  Linux LVM\n}}}\n\nLVM configuration production\n{{{nslc\nroot@sis:~# vgdisplay\n  --- Volume group ---\n  VG Name               sis\n  System ID             \n  Format                lvm2\n  Metadata Areas        1\n  Metadata Sequence No  3\n  VG Access             read/write\n  VG Status             resizable\n  MAX LV                0\n  Cur LV                2\n  Open LV               2\n  Max PV                0\n  Cur PV                1\n  Act PV                1\n  VG Size               11.76 GiB\n  PE Size               4.00 MiB\n  Total PE              3010\n  Alloc PE / Size       3003 / 11.73 GiB\n  Free  PE / Size       7 / 28.00 MiB\n  VG UUID               bNAhzb-JgoV-zvZP-vNGQ-nnSw-gEgc-PovhQk\n\n}}}\n\n{{{\nroot@sis:/var/www# apt-get -f install                            \nReading package lists... Done\nBuilding dependency tree       \nReading state information... Done\nCorrecting dependencies... Done\nThe following packages were automatically installed and are no longer required:\n  linux-headers-3.2.0-70-generic linux-headers-3.2.0-65-generic linux-headers-3.2.0-60 linux-headers-3.2.0-61\n  linux-headers-3.2.0-63 linux-headers-3.2.0-64 linux-headers-3.2.0-70 linux-headers-3.2.0-65 linux-headers-3.2.0-72\n  linux-headers-3.2.0-67 linux-headers-3.2.0-68 linux-headers-3.2.0-74 linux-headers-3.2.0-69 linux-headers-3.2.0-75\n  linux-headers-3.2.0-76 linux-headers-3.2.0-77 linux-headers-3.2.0-68-generic linux-headers-3.2.0-60-generic\n  linux-headers-3.2.0-76-generic linux-headers-3.2.0-63-generic linux-headers-3.2.0-74-generic linux-headers-3.2.0-69-generic\n  linux-headers-3.2.0-61-generic linux-headers-3.2.0-77-generic linux-headers-3.2.0-64-generic linux-headers-3.2.0-72-generic\n  linux-headers-3.2.0-67-generic linux-headers-3.2.0-75-generic\nUse 'apt-get autoremove' to remove them.\nThe following extra packages will be installed:\n  linux-headers-3.2.0-92 linux-headers-3.2.0-92-generic linux-headers-generic\nThe following NEW packages will be installed:\n  linux-headers-3.2.0-92 linux-headers-3.2.0-92-generic\nThe following packages will be upgraded:\n  linux-headers-generic\n1 upgraded, 2 newly installed, 0 to remove and 164 not upgraded.\n7 not fully installed or removed.\nNeed to get 0 B/12.7 MB of archives.\nAfter this operation, 67.8 MB of additional disk space will be used.\nDo you want to continue [Y/n]? \n(Reading database ... 689118 files and directories currently installed.)\nUnpacking linux-headers-3.2.0-92 (from .../linux-headers-3.2.0-92_3.2.0-92.130_all.deb) ...\ndpkg: error processing /var/cache/apt/archives/linux-headers-3.2.0-92_3.2.0-92.130_all.deb (--unpack):\n error creating directory `./usr/src/linux-headers-3.2.0-92/drivers/infiniband': No space left on device\nNo apport report written because MaxReports is reached already\n                                                              dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)\nUnpacking linux-headers-3.2.0-92-generic (from .../linux-headers-3.2.0-92-generic_3.2.0-92.130_amd64.deb) ...\ndpkg: error processing /var/cache/apt/archives/linux-headers-3.2.0-92-generic_3.2.0-92.130_amd64.deb (--unpack):\n unable to create `/usr/src/linux-headers-3.2.0-92-generic/include/config/atm/solos.h.dpkg-new' (while processing `./usr/src/linux-headers-3.2.0-92-generic/include/config/atm/solos.h'): No space left on device\nNo apport report written because MaxReports is reached already\n                                                              dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)\nErrors were encountered while processing:\n /var/cache/apt/archives/linux-headers-3.2.0-92_3.2.0-92.130_all.deb\n /var/cache/apt/archives/linux-headers-3.2.0-92-generic_3.2.0-92.130_amd64.deb\nE: Sub-process /usr/bin/dpkg returned an error code (1)\n\n}}}\n\n{{{\nroot@sis:~# df -i\nFilesystem                                  Inodes  IUsed  IFree IUse% Mounted on\n/dev/mapper/sis-root                        720896 719481   1415  100% /\nudev                                         92908    436  92472    1% /dev\ntmpfs                                        95180    327  94853    1% /run\nnone                                         95180      5  95175    1% /run/lock\nnone                                         95180      1  95179    1% /run/shm\n/dev/sda1                                   124496    230 124266    1% /boot\n//fileserver.campus.goddard.edu/id_photos        0      0      0     - /photos\n//fileserver.campus.goddard.edu/SIS_scans        0      0      0     - /scans\n//fileserver.campus.goddard.edu/SIS_uploads      0      0      0     - /uploads\n//fileserver.campus.goddard.edu/id_photos        0      0      0     - /photo_dir\n\n}}}\n\nTry this program:\n{{{\n#!/bin/bash\n# count_em - count files in all subdirectories under current directory.\n# Thu Oct 22 06:45:16 EDT 2015 pflint\n# SOURCE: http://stackoverflow.com/questions/653096/howto-free-inode-usage\necho 'echo $(ls -a &quot;$1&quot; | wc -l) $1' &gt;/tmp/count_em_$$\nchmod 700 /tmp/count_em_$$\nfind . -mount -type d -print0 | xargs -0 -n1 /tmp/count_em_$$ | sort -n\nrm -f /tmp/count_em_$$\n}}}\n\nbetter, try:\n{{{\nfor i in ./*; do echo -n $i&quot;    &quot;; find $i -type f | wc -l; done |rev | sort -n | rev\n}}}\n\nTip:\n[[Read about php garbage collection|http://pim.famnit.upr.si/blog/index.php?/archives/172-Running-out-of-inodes,-no-space-left-on-device,-php-not-cleaning-sessions.html]]\n\nand see PHPgarbageSessions\n\n[[Changing SSL keys|ChangingSSLkeys]]\n\n[[Testing SSL keys|TestingSSLkeys]]\n\nInteresting warning \n{{{\nroot@sis:/etc/apache2# apache2ctl configtest \n[Wed Nov 18 11:24:07 2015] [warn] NameVirtualHost *:80 has no VirtualHosts\nSyntax OK\n}}}\n\nThis is where to try to find answer...\n|!Reference HTML|! Description|\n|[[basic goggle search |https://www.google.com/search?q=%5Bwarn%5D+NameVirtualHost+*%3A80+has+no+VirtualHosts&amp;ie=UTF-8&amp;sa=Search&amp;channel=fe&amp;client=browser-ubuntu&amp;hl=en&amp;gws_rd=ssl]]||\n|[[webmasterworld |https://www.webmasterworld.com/apache/3554465.htm]]||\n|[[Fix from serverfault |http://serverfault.com/questions/1405/apache-2-startup-warning-namevirtualhost-80-has-no-virtualhosts]]||\n|[[Ubuntu Forums|http://ubuntuforums.org/showthread.php?t=1480907]]||\n|[[Running Multiple Apps in Apache |http://mightydreams.blogspot.com/2011/03/running-multiple-applications-in-lan.html]]||\n|[[Hosting Multiple Websites |http://www.debian-administration.org/article/412/Hosting_multiple_websites_with_Apache2]]||\n\n</div>
-<div tiddler="NSLC" modifier="flint" modified="201512081347" created="201511302035" tags="">What NSLC needs is a text only spreadsheet.\nThe best way to do this is at import, select all the columns and then select from the drop down &quot;Text&quot;\n\nNSLCcurrentDataFlow\n\n[[Share for data|https://drive.google.com/a/goddard.edu/folderview?id=0B2TQ0PkLnoJYTVFvWEtBMS03UW8&amp;usp=sharing_eid&amp;ts=5661b057]]\n\n\nPossibilities include:\n* [[Ethercalc|https://ethercalc.net/]]\n\n[[Redmine Tickets|http://redmine.goddard.edu/search?q=nslc]]\n\nBe aware that in the [[instruction sheet|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=608968082&amp;vpid=A2]] there is a [[google script|https://script.google.com/a/goddard.edu/macros/d/M1tKmNxvcgo70lrzmwqTDlPypkRWoM_M8/edit?uiv=2&amp;mid=ACjPJvGZaNr9ZZ1OqBgxsES1TSKyZHGXebDpWmBs22QJaVsCk-NPMWNxq3vZP0XPW4I491jYuuzux2-m6tA2oIMHJBqB7sZhQGUZNHqiQyAhD8MoSVKD2FsOgJIZtu79N08geF428gDxzgU]] that does the final post processing</div>
-<div tiddler="NSLCcurrentDataFlow" modifier="flint" modified="201512042014" created="201512041912" tags="">The current data flow is as folllows\n\n* Have privileges to the [[&quot;NSLC Reporting Google Drive&quot;|https://drive.google.com/a/goddard.edu/folderview?id=0B2TQ0PkLnoJYTVFvWEtBMS03UW8&amp;usp=sharing_eid&amp;ts=5661b057]]\n* Open and follow [[&quot;Instructions&quot;|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=608968082&amp;vpid=A2]]\n* Logs into [[sis.goddard.edu|http://sis.goddard.edu]] with Registrar role. \n* Registrar runs report, [[nslc.php|nslc.php]]\n* Downloads, Open report in MS Excel, and edits spreadsheet.\n* Copies whole report and pastes it into [[&quot;Original From SIS&quot;|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=897766620&amp;vpid=A1]] a tab from the [[&quot;Instructions&quot;|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=608968082&amp;vpid=A2]]\n* Hits &quot;Generate Report&quot;, which activates [[google script|]] that creates the report.\n</div>
-<div tiddler="NSLCproposedDataFlow" modifier="flint" modified="201512052005" created="201512041913" tags="">* Read line from csv\n* Create a line of spaces \n** string_val = &quot;x&quot; * 10  # gives you &quot;xxxxxxxxxx&quot;\n*** In [3]: outstr = 1250 * &quot; &quot;\n*** In [4]: len(outstr)\n\n* change this into a list\n** outlist = list(outstr)\n* change data into a list element\n** inlist = list(&quot;hello world&quot;)\n* place data in the list in the correct place\n** outlist[10:19] = inlist\n** &quot;''.join(outlist)\n\n* take first vairable ljust padding with space it and place it in the string where it is supposed to go\n** take the next variable and place it in the string where it is supposed to go\n* loop till you run out of variables in the line\n* join the list and \n* write it out. </div>
+	<div id="storeArea">
+<div tiddler="Basic Editing" modifier="flint" modified="200701261845" created="200701261845" tags="">|!Punctuation|!Location|!Function|\n|{{{@@...@@}}}|surrounding
+ text|@@highlighted text@@|\n|{{{//...//}}}|surrounding 
+text|//italicized text//|\n|{{{==...==}}}|surrounding 
+text|==strikethrough text==|\n|{{{''...''}}}|surrounding 
+text|''boldfaced text''|\n|{{{__...__}}}|surrounding text|__underlined 
+text__|\n|{{{[[text|url]]}}}|around text/url 
+pair|[[text|http://gri.gallaudet.edu/]] link to url|\n|{{{ {...} 
+}}}|''__tripled__'' surrounding text|{{{in-line literal text}}}|\n|{{{ 
+{...} }}}|''__tripled__'' surrounding ''__lines__''|literal 
+block|\n|{{{&lt;&lt;&lt;}}}|surrounding 
+''__lines__''|blockquotes|\n|{{{!}}}|at start of 
+line|subheading|\n|{{{|...|...|}}}|line sectioned by vertical bars|table
+ row|\n|{{{!}}}|in a table|!table heading|\n|{{{----}}}|alone on 
+line|horizontal rule|\n|{{{*}}}|at start of line|bulleted list 
+item|\n|{{{#}}}|at start of line|numbered list item|\nsource: Kevin 
+Cole, January 2007</div>
+<div tiddler="FormattingInstructions" modifier="flint" modified="200701261846" created="200701261846" tags="">TTiddlyWiki
+ uses Wiki style markup, a way of lightly "tagging" plain text so it can
+ be transformed into HTML. Edit this Tiddler to see samples.\n\n! Header
+ Samples\n!Header 1\n!!Header 2\n!!!Header 3\n!!!!Header 4\n!!!!!Header 
+5\n\n! Unordered Lists:\n* Lists are where it's at\n* Just use an 
+asterisk and you're set\n** To nest lists just add more 
+asterisks...\n***...like this\n* The circle makes a great bullet because
+ once you've printed a list you can mark off completed items\n* You can 
+also nest mixed list types\n## Like this\n\n! Ordered Lists\n# Ordered 
+lists are pretty neat too\n# If you're handy with HTML and CSS you could
+ customize the [[numbering 
+scheme|http://www.w3schools.com/css/pr_list-style-type.asp]]\n## To 
+nest, just add more octothorpes (pound signs)...\n### Like this\n* You 
+can also\n** Mix list types\n*** like this\n# Pretty neat don't you 
+think?\n\n! Tiddler links\nTo create a Tiddler link, just use mixed-case
+ WikiWord, or use [[brackets]] for NonWikiWordLinks. This is how the GTD
+ style [[@Action]] lists are created. \n\nNote that existing Tiddlers 
+are in bold and empty Tiddlers are in italics. See CreatingTiddlers for 
+details.\n\n! External Links\nYou can link to [[external 
+sites|http://google.com]] with brackets. You can also LinkToFolders on 
+your machine or network shares.\n\n! Images\nEdit this tiddler to see 
+how it's 
+done.\n[img[http://img110.echo.cx/img110/139/gorilla8nw.jpg]]\n\n!Tables\n|!th1111111111|!th2222222222|\n|&gt;|
+ colspan |\n| rowspan |left|\n|~| right|\n|colored| center 
+|\n|caption|c\n\nFor a complex table example, see PeriodicTable.\n\n! 
+Horizontal Rules\nYou can divide a tiddler into\n----\nsections by 
+typing four dashes on a line by themselves.\n\n! 
+Blockquotes\n&lt;&lt;&lt;\nThis is how you do an extended, wrapped 
+blockquote so you don't have to put angle quotes on every 
+line.\n&lt;&lt;&lt;\n&gt;level 1\n&gt;level 1\n&gt;&gt;level 
+2\n&gt;&gt;level 2\n&gt;&gt;&gt;level 3\n&gt;&gt;&gt;level 
+3\n&gt;&gt;level 2\n&gt;level 1\n\n! Other 
+Formatting\n''Bold''\n==Strike==\n__Underline__\n//Italic//\nSuperscript:
+ 2^^3^^=8\nSubscript: a~~ij~~ = 
+-a~~ji~~\n@@highlight@@\n@@color(green):green 
+colored@@\n@@bgcolor(#ff0000):color(#ffffff):red colored@@\n</div>
+<div tiddler="SiteTitle" modifier="flint" modified="201601171546" created="201105222143" tags="protected">nslcutil.py</div>
+<div tiddler="SiteSubtitle" modifier="flint" modified="201601171548" created="201105222143" tags="protected">National Student Clearinghouse Enrollment Transmission checking program</div>
+<div tiddler="existing" modifier="flint" modified="201311122016" created="201311122016" tags="">Type the text for 'New Tiddler'</div>
+<div tiddler="manual" modifier="flint" modified="201311122018" created="201311122018" tags="">Type the text for 'New Tiddler'</div>
+<div tiddler="DefaultTiddlers" modifier="flint" modified="201601171548" created="201601171548" tags="protected">[[overview]]</div>
+<div tiddler="overview" modifier="flint" modified="201601271534" created="201601171552" tags="">This
+ is based upon [[the Enrollment Report Programming and TestingGuide 
+|https://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf]]\n\n\n[[Functional
+ Requirements|NSLCRequirements]]</div>
+<div tiddler="sis.goddard.eduDetails" modifier="flint" modified="201512111942" created="201510161756" tags="">As
+ of Wednesday, October 28, 2015\n\nAll ssh signins from outside goddard 
+net arrive as 
+192.168.1.1\n\n[[activate.goddard.edu|https://activate.goddard.edu/]]\n\nis
+ how we log in to create a new account\n\nAs of Thursday, October 22, 
+2nslc015 09:51 AM\n{{{\n 09:50:04 up 204 days,  1:08,  2 users,  load 
+average: 0.22, 0.31, 0.62\n}}}\n\n[[LVM Guidance 
+|https://www.rootusers.com/how-to-increase-the-size-of-a-linux-lvm-by-adding-a-new-disk/]]\n\n{{{\nStarting
+ Nmap 6.40 ( http://nmap.org ) at 2015-10-16 13:55 EDT\nNmap scan report
+ for sis.goddard.edu (207.136.210.8)\nHost is up (0.0037s 
+latency).\nrDNS record for 207.136.210.8: 
+host8.goddard3.cust.sover.net\nNot shown: 996 filtered ports\nPORT    
+STATE SERVICE\n22/tcp  open  ssh\n80/tcp  open  http\n443/tcp open  
+https\n636/tcp open  ldapssl\n}}}\n\n\n\n{{{\nroot@sis:~# df 
+-h\nFilesystem                                   Size  Used Avail Use% 
+Mounted on\n/dev/mapper/sis-root                          11G  6.6G  
+3.8G  64% /\nudev                                         363M  4.0K  
+363M   1% /dev\ntmpfs                                         75M  268K 
+  75M   1% /run\nnone                                         5.0M     0
+  5.0M   0% /run/lock\nnone                                         372M
+     0  372M   0% /run/shm\n/dev/sda1                                   
+ 228M   25M  192M  12% /boot\n//fileserver.campus.goddard.edu/id_photos 
+   700G  461G  240G  66% 
+/photos\n//fileserver.campus.goddard.edu/SIS_scans    700G  461G  240G  
+66% /scans\n//fileserver.campus.goddard.edu/SIS_uploads  700G  461G  
+240G  66% /uploads\n//fileserver.campus.goddard.edu/id_photos    700G  
+461G  240G  66% /photo_dir\n\n}}}\n\n\n\n{{{\nroot@sis:~# fdisk 
+-l\n\nDisk /dev/sda: 23.6 GB, 23622320128 bytes\n255 heads, 63 
+sectors/track, 2871 cylinders, total 46137344 sectors\nUnits = sectors 
+of 1 * 512 = 512 bytes\nSector size (logical/physical): 512 bytes / 512 
+bytes\nI/O size (minimum/optimal): 512 bytes / 512 bytes\nDisk 
+identifier: 0x00057b03\n\n   Device Boot      Start         End      
+Blocks   Id  System\n/dev/sda1   *        2048      499711      248832  
+ 83  Linux\n/dev/sda2          501758    25163775    12331009    5  
+Extended\n/dev/sda5          501760    25163775    12331008   8e  Linux 
+LVM\n}}}\n\nLVM configuration production\n{{{nslc\nroot@sis:~# 
+vgdisplay\n  --- Volume group ---\n  VG Name               sis\n  System
+ ID             \n  Format                lvm2\n  Metadata Areas        
+1\n  Metadata Sequence No  3\n  VG Access             read/write\n  VG 
+Status             resizable\n  MAX LV                0\n  Cur LV       
+         2\n  Open LV               2\n  Max PV                0\n  Cur 
+PV                1\n  Act PV                1\n  VG Size               
+11.76 GiB\n  PE Size               4.00 MiB\n  Total PE              
+3010\n  Alloc PE / Size       3003 / 11.73 GiB\n  Free  PE / Size       7
+ / 28.00 MiB\n  VG UUID               
+bNAhzb-JgoV-zvZP-vNGQ-nnSw-gEgc-PovhQk\n\n}}}\n\n{{{\nroot@sis:/var/www#
+ apt-get -f install                            \nReading package 
+lists... Done\nBuilding dependency tree       \nReading state 
+information... Done\nCorrecting dependencies... Done\nThe following 
+packages were automatically installed and are no longer required:\n  
+linux-headers-3.2.0-70-generic linux-headers-3.2.0-65-generic 
+linux-headers-3.2.0-60 linux-headers-3.2.0-61\n  linux-headers-3.2.0-63 
+linux-headers-3.2.0-64 linux-headers-3.2.0-70 linux-headers-3.2.0-65 
+linux-headers-3.2.0-72\n  linux-headers-3.2.0-67 linux-headers-3.2.0-68 
+linux-headers-3.2.0-74 linux-headers-3.2.0-69 linux-headers-3.2.0-75\n  
+linux-headers-3.2.0-76 linux-headers-3.2.0-77 
+linux-headers-3.2.0-68-generic linux-headers-3.2.0-60-generic\n  
+linux-headers-3.2.0-76-generic linux-headers-3.2.0-63-generic 
+linux-headers-3.2.0-74-generic linux-headers-3.2.0-69-generic\n  
+linux-headers-3.2.0-61-generic linux-headers-3.2.0-77-generic 
+linux-headers-3.2.0-64-generic linux-headers-3.2.0-72-generic\n  
+linux-headers-3.2.0-67-generic linux-headers-3.2.0-75-generic\nUse 
+'apt-get autoremove' to remove them.\nThe following extra packages will 
+be installed:\n  linux-headers-3.2.0-92 linux-headers-3.2.0-92-generic 
+linux-headers-generic\nThe following NEW packages will be installed:\n  
+linux-headers-3.2.0-92 linux-headers-3.2.0-92-generic\nThe following 
+packages will be upgraded:\n  linux-headers-generic\n1 upgraded, 2 newly
+ installed, 0 to remove and 164 not upgraded.\n7 not fully installed or 
+removed.\nNeed to get 0 B/12.7 MB of archives.\nAfter this operation, 
+67.8 MB of additional disk space will be used.\nDo you want to continue 
+[Y/n]? \n(Reading database ... 689118 files and directories currently 
+installed.)\nUnpacking linux-headers-3.2.0-92 (from 
+.../linux-headers-3.2.0-92_3.2.0-92.130_all.deb) ...\ndpkg: error 
+processing 
+/var/cache/apt/archives/linux-headers-3.2.0-92_3.2.0-92.130_all.deb 
+(--unpack):\n error creating directory 
+`./usr/src/linux-headers-3.2.0-92/drivers/infiniband': No space left on 
+device\nNo apport report written because MaxReports is reached already\n
+                                                              dpkg-deb: 
+error: subprocess paste was killed by signal (Broken pipe)\nUnpacking 
+linux-headers-3.2.0-92-generic (from 
+.../linux-headers-3.2.0-92-generic_3.2.0-92.130_amd64.deb) ...\ndpkg: 
+error processing 
+/var/cache/apt/archives/linux-headers-3.2.0-92-generic_3.2.0-92.130_amd64.deb
+ (--unpack):\n unable to create 
+`/usr/src/linux-headers-3.2.0-92-generic/include/config/atm/solos.h.dpkg-new'
+ (while processing 
+`./usr/src/linux-headers-3.2.0-92-generic/include/config/atm/solos.h'): 
+No space left on device\nNo apport report written because MaxReports is 
+reached already\n                                                       
+       dpkg-deb: error: subprocess paste was killed by signal (Broken 
+pipe)\nErrors were encountered while processing:\n 
+/var/cache/apt/archives/linux-headers-3.2.0-92_3.2.0-92.130_all.deb\n 
+/var/cache/apt/archives/linux-headers-3.2.0-92-generic_3.2.0-92.130_amd64.deb\nE:
+ Sub-process /usr/bin/dpkg returned an error code 
+(1)\n\n}}}\n\n{{{\nroot@sis:~# df -i\nFilesystem                        
+          Inodes  IUsed  IFree IUse% Mounted on\n/dev/mapper/sis-root   
+                     720896 719481   1415  100% /\nudev                 
+                        92908    436  92472    1% /dev\ntmpfs           
+                             95180    327  94853    1% /run\nnone       
+                                  95180      5  95175    1% 
+/run/lock\nnone                                         95180      1  
+95179    1% /run/shm\n/dev/sda1                                   124496
+    230 124266    1% /boot\n//fileserver.campus.goddard.edu/id_photos   
+     0      0      0     - 
+/photos\n//fileserver.campus.goddard.edu/SIS_scans        0      0      0
+     - /scans\n//fileserver.campus.goddard.edu/SIS_uploads      0      0
+      0     - /uploads\n//fileserver.campus.goddard.edu/id_photos       
+ 0      0      0     - /photo_dir\n\n}}}\n\nTry this 
+program:\n{{{\n#!/bin/bash\n# count_em - count files in all 
+subdirectories under current directory.\n# Thu Oct 22 06:45:16 EDT 2015 
+pflint\n# SOURCE: 
+http://stackoverflow.com/questions/653096/howto-free-inode-usage\necho 
+'echo $(ls -a &amp;quot;$1&amp;quot; | wc -l) $1' 
+&amp;gt;/tmp/count_em_$$\nchmod 700 /tmp/count_em_$$\nfind . -mount 
+-type d -print0 | xargs -0 -n1 /tmp/count_em_$$ | sort -n\nrm -f 
+/tmp/count_em_$$\n}}}\n\nbetter, try:\n{{{\nfor i in ./*; do echo -n 
+$i&amp;quot;    &amp;quot;; find $i -type f | wc -l; done |rev | sort -n
+ | rev\n}}}\n\nTip:\n[[Read about php garbage 
+collection|http://pim.famnit.upr.si/blog/index.php?/archives/172-Running-out-of-inodes,-no-space-left-on-device,-php-not-cleaning-sessions.html]]\n\nand
+ see PHPgarbageSessions\n\n[[Changing SSL 
+keys|ChangingSSLkeys]]\n\n[[Testing SSL 
+keys|TestingSSLkeys]]\n\nInteresting warning 
+\n{{{\nroot@sis:/etc/apache2# apache2ctl configtest \n[Wed Nov 18 
+11:24:07 2015] [warn] NameVirtualHost *:80 has no VirtualHosts\nSyntax 
+OK\n}}}\n\nThis is where to try to find answer...\n|!Reference HTML|! 
+Description|\n|[[basic goggle search 
+|https://www.google.com/search?q=%5Bwarn%5D+NameVirtualHost+*%3A80+has+no+VirtualHosts&amp;amp;ie=UTF-8&amp;amp;sa=Search&amp;amp;channel=fe&amp;amp;client=browser-ubuntu&amp;amp;hl=en&amp;amp;gws_rd=ssl]]||\n|[[webmasterworld
+ |https://www.webmasterworld.com/apache/3554465.htm]]||\n|[[Fix from 
+serverfault 
+|http://serverfault.com/questions/1405/apache-2-startup-warning-namevirtualhost-80-has-no-virtualhosts]]||\n|[[Ubuntu
+ Forums|http://ubuntuforums.org/showthread.php?t=1480907]]||\n|[[Running
+ Multiple Apps in Apache 
+|http://mightydreams.blogspot.com/2011/03/running-multiple-applications-in-lan.html]]||\n|[[Hosting
+ Multiple Websites 
+|http://www.debian-administration.org/article/412/Hosting_multiple_websites_with_Apache2]]||\n\n</div>
+<div tiddler="NSLC" modifier="flint" modified="201512081347" created="201511302035" tags="">What
+ NSLC needs is a text only spreadsheet.\nThe best way to do this is at 
+import, select all the columns and then select from the drop down 
+&amp;quot;Text&amp;quot;\n\nNSLCcurrentDataFlow\n\n[[Share for 
+data|https://drive.google.com/a/goddard.edu/folderview?id=0B2TQ0PkLnoJYTVFvWEtBMS03UW8&amp;amp;usp=sharing_eid&amp;amp;ts=5661b057]]\n\n\nPossibilities
+ include:\n* [[Ethercalc|https://ethercalc.net/]]\n\n[[Redmine 
+Tickets|http://redmine.goddard.edu/search?q=nslc]]\n\nBe aware that in 
+the [[instruction 
+sheet|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=608968082&amp;amp;vpid=A2]]
+ there is a [[google 
+script|https://script.google.com/a/goddard.edu/macros/d/M1tKmNxvcgo70lrzmwqTDlPypkRWoM_M8/edit?uiv=2&amp;amp;mid=ACjPJvGZaNr9ZZ1OqBgxsES1TSKyZHGXebDpWmBs22QJaVsCk-NPMWNxq3vZP0XPW4I491jYuuzux2-m6tA2oIMHJBqB7sZhQGUZNHqiQyAhD8MoSVKD2FsOgJIZtu79N08geF428gDxzgU]]
+ that does the final post processing</div>
+<div tiddler="NSLCcurrentDataFlow" modifier="flint" modified="201512042014" created="201512041912" tags="">The
+ current data flow is as folllows\n\n* Have privileges to the 
+[[&amp;quot;NSLC Reporting Google 
+Drive&amp;quot;|https://drive.google.com/a/goddard.edu/folderview?id=0B2TQ0PkLnoJYTVFvWEtBMS03UW8&amp;amp;usp=sharing_eid&amp;amp;ts=5661b057]]\n*
+ Open and follow 
+[[&amp;quot;Instructions&amp;quot;|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=608968082&amp;amp;vpid=A2]]\n*
+ Logs into [[sis.goddard.edu|http://sis.goddard.edu]] with Registrar 
+role. \n* Registrar runs report, [[nslc.php|nslc.php]]\n* Downloads, 
+Open report in MS Excel, and edits spreadsheet.\n* Copies whole report 
+and pastes it into [[&amp;quot;Original From 
+SIS&amp;quot;|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=897766620&amp;amp;vpid=A1]]
+ a tab from the 
+[[&amp;quot;Instructions&amp;quot;|https://docs.google.com/spreadsheets/d/1vVU-1epH3evBxD-m6cbpse6sKDidi1KzSOMh2Npr5Ig/edit#gid=608968082&amp;amp;vpid=A2]]\n*
+ Hits &amp;quot;Generate Report&amp;quot;, which activates [[google 
+script|]] that creates the report.\n</div>
+<div tiddler="NSLCproposedDataFlow" modifier="flint" modified="201512052005" created="201512041913" tags="">*
+ Read line from csv\n* Create a line of spaces \n** string_val = 
+&amp;quot;x&amp;quot; * 10  # gives you 
+&amp;quot;xxxxxxxxxx&amp;quot;\n*** In [3]: outstr = 1250 * &amp;quot; 
+&amp;quot;\n*** In [4]: len(outstr)\n\n* change this into a list\n** 
+outlist = list(outstr)\n* change data into a list element\n** inlist = 
+list(&amp;quot;hello world&amp;quot;)\n* place data in the list in the 
+correct place\n** outlist[10:19] = inlist\n** 
+&amp;quot;''.join(outlist)\n\n* take first vairable ljust padding with 
+space it and place it in the string where it is supposed to go\n** take 
+the next variable and place it in the string where it is supposed to 
+go\n* loop till you run out of variables in the line\n* join the list 
+and \n* write it out. </div>
 <div tiddler="nslc.php" modifier="flint" modified="201512041921" created="201512041921" tags="">Type the text for 'nslc.php'</div>
-<div tiddler="NSLCGoogleScript" modifier="flint" modified="201512301449" created="201512041925" tags="">Google Script is basically Javascript.\n\nThe IDE for this is explained in this [[video|https://www.youtube.com/watch?v=ezbH4IJynhU]]\n\n{{{\n// Page vars\nvar max_rows = 2000;\nvar max_cols = 135;\nvar header_cols = 8;\nvar footer_cols = 11;\n\nvar ui = SpreadsheetApp.getUi();\n\n/**\n* Clears &quot;Original from SIS&quot; sheet\n*\n* @name clearSheet\n*/\nfunction clearSheet() {\n  \n    var ss = SpreadsheetApp.getActiveSpreadsheet();\n    var thissheet = ss.getSheetByName(&quot;Original from SIS&quot;);\n    thissheet.clear();\n}\n\n/**\n* Generates Tab Separated Values NSLC Report.\n* File will be created in user's &quot;My Drive&quot;\n*\n* @name generateReport\n*/\nfunction generateReport() {\n  \n  \n  var response = ui.alert(&quot;Generate NSLC Report?&quot;, &quot;This should only take a minute&quot;, ui.ButtonSet.YES_NO);\n  \n  // if yes\n  if (response == ui.Button.YES) {\n    \n    // Get the active spreadsheet.\n    var ss = SpreadsheetApp.getActiveSpreadsheet();\n    \n    // get Row 1 data from Header and Footer\n    var header = getHeaderFooter(ss.getSheetByName(&quot;Header&quot;),header_cols);\n    var footer = getHeaderFooter(ss.getSheetByName(&quot;Footer&quot;), footer_cols);\n    \n    // get data from Reformatted sheet\n    var data = getData(ss.getSheetByName(&quot;Reformatted&quot;));\n    \n    // test for real data returned\n    if (data) {\n      var doc = header + data + footer;\n      \n      // create a text file with the data\n      var report_name = &quot;nslc_003686_&quot; + getToday() + &quot;.txt&quot;;   \n      var report = DriveApp.createFile(report_name, doc);\n      \n      // move file into NSLC Report/Final folder\n      var report_folder = DriveApp.getFolderById(&quot;0B2TQ0PkLnoJYbFRVaC05NWRFZ1E&quot;);\n      report_folder.addFile(report);\n      \n      // display &quot;all done&quot; message\n      ui.alert('The NSLC Report is Complete', 'You can find the report here: https://drive.google.com/drive/?tab=mo#folders/0B2TQ0PkLnoJYbFRVaC05NWRFZ1E', ui.ButtonSet.OK);\n    }\n  }\n}\n\n/**\n* Gets header or footer content\n*\n* @name getHeaderFooter\n* @param {sheet} this_sheet. The sheet from which to pull the data.\n* @param {number} num_cols. The number of columns from which to pull data.\n* @return The data in TSV format.\n*/\nfunction getHeaderFooter(this_sheet, num_cols) {\n  var range = this_sheet.getRange(1, 1, 1, num_cols);\n  \n  return format_tsv(range);\n}\n\n\n/**\n* Gets reformatted content\n*\n* @name getData\n* @param {sheet} this_sheet. The sheet from which to pull the data.\n* @return The data in TSV format.\n*/\nfunction getData(this_sheet) {\n  \n  // get column A\n  var test_range = this_sheet.getRange(1, 1, max_rows, 1);\n  var test_data = test_range.getValues();\n  var test_data_len = test_data.length;\n  var last_row = 0;\n  \n  // test for values to determine last row (can't use functions like getDataRange() because they will return in-cell formulas in addition to acutual values\n  for ( var i=0; i&lt;test_data_len; ++i ){\n    if(isCellEmpty(test_data[i][0])) break;\n    last_row = i + 1;\n  }\n  \n  if (!last_row) {\n    ui.alert('No Data was found on the Original from SIS sheet', 'Aborting.....', ui.ButtonSet.OK);\n    return 0;\n  } else {\n    // use that range   // get values\n    var range = this_sheet.getRange(1, 1, last_row, max_cols);\n    \n    // format as TSV and return\n    return format_tsv(range);\n  }\n}\n\n\n/**\n* Reformat data into Tab Separated Values\n*\n* @name format_tsv\n* @param {range} range. A range object from the sheet from which to pull the data.\n* @return The data in TSV format.\n*/ \nfunction format_tsv(range) {\n  \n  var data = range.getValues();\n  var formatted_data = &quot;&quot;;\n  for (var i = 0; i &lt; data.length; i++) {\n    var row = &quot;&quot;;\n    for (var j = 0; j &lt; data[i].length; j++) {\n      row += data[i][j] + &quot;\st&quot;;\n    }\n    formatted_data += row + &quot;\sn&quot;;    \n  }\n  \n  return formatted_data;  \n  \n}\n\n\n/**\n* Tests whether parameter is empty\n*\n* @name isCellEmpty\n* @param {cell_data} string. The data to test.\n* @return Returns true if the cell where cell_data was read from is empty.\n*/ \nfunction isCellEmpty(cell_data) {\n  return typeof(cell_data) == &quot;string&quot; &amp;&amp; cell_data == &quot;&quot;;\n}\n\n\n/**\n* Gets today's date\n*\n* @name getToday\n* @return Returns today's date in yyyymmdd form.\n*/ \nfunction getToday() {\n  var today = new Date();\n  var dd = today.getDate();\n  var mm = today.getMonth()+1; //January is 0!\n  var yyyy = today.getFullYear();\n  \n  if(dd&lt;10) {\n    dd='0'+dd\n  } \n  \n  if(mm&lt;10) {\n    mm='0'+mm\n  } \n  \n  return today = yyyy+mm+dd;\n}\n\n\n/**\n* Add menu item to run script\n*\n* @name onOpen\n* @param {event} e. \n*/ \nfunction onOpen(e) {\n  \n  // Get the active spreadsheet.\n  var ss = SpreadsheetApp.getActiveSpreadsheet();\n  var menuEntries = [ {name: &quot;Clear 'Original from SIS' Sheet&quot;, functionName: &quot;clearSheet&quot;}, {name: &quot;Generate Report&quot;, functionName: &quot;generateReport&quot;} ];\n  ss.addMenu(&quot;NSLC&quot;, menuEntries);\n}\n}}}\n\nWhat can we learn about [[DriveApp.createFile]]</div>
-<div tiddler="NSLCdata" modifier="flint" modified="201512301554" created="201512041958" tags="">Data Distribution in export file:\n{{{\ncat good.txt |while read line; do echo &quot;$line&quot; |wc -c; done |sort -n |uniq -c\n}}}\n\nmaybe better with awk\n{{{\nawk '{ print length($0); }' &quot;nslc_003686_202602_fixed (3).txt&quot;\n}}}\n\n! Tab Approach\nThis will give you number of tabs line by line:\n{{{\nawk '{print gsub(/\st/,&quot;&quot;)}' infile &gt; output.txt\n}}}\n\nThis will let you examine a particular tab value, in this case field 2 the SSN\n{{{\nawk 'BEGIN { FS = &quot;\st&quot; } ; { print $2 }' \n}}}\n\nHeader 8 tabs\nData Lines 135 tabs\nFooter 11 tabs\n\nSearch cp d1_schema_complete_2015-12-09.csv schema.py ; sed 's/,//1' schema.py |sed 's/,/=[/1' | sed 's/,/&quot;,&quot;/g'| sed 's/$/&quot;]/g' |sed 's/=\s[/=\s[\s&quot;/g'\n\nlinux library parsing fixed length mainframe\n\nhttp://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch34s05.htmlcp \n{{{\nd1_schema_complete_2015-12-09.csv schema.py~ ; sed 's/,//1' schema.py~ |sed 's/,/=[/1' | sed 's/,/&quot;,&quot;/g'| sed 's/$/&quot;]/g' |sed 's/=\s[/=\s[\s&quot;/g'# &gt; schema.py\n}}}\n\n\nhttps://code.google.com/p/csvfix/\n\n* Save a fully quoted\n* Check for bad elements\n* Run this code\n{{{\ncp d1_schema_complete_2015-12-10-1.csv schema.py~ ;cat schema.py~ |sed 's/,//1' |sed 's/&quot;&quot;//1' | sed 's/,/ = [/1' |sed 's/&quot;//1' |sed 's/&quot;//1' |sed 's/$/]/g'  &gt; schema.py \n}}}</div>
-<div tiddler="NSLCsources" modifier="flint" modified="201512272211" created="201512101451" tags="">\n* [[National Student Clearinghouse Enrollment Reporting Programming &amp; Testing Guide|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf]]\n* [[The part we are interested in|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf#page=15]]\n* [[Header|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf#page=14]]\n* [[Footer|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf#page=31]]</div>
-<div tiddler="NSLCdataAnalysis" modifier="flint" modified="201512301652" created="201512301650" tags="">Here is the script\n\n{{{\n ls -alt --full-time --time-style=long-iso . | grep $(date +%F) |cut -c 50- | grep -v ^&quot;\s.&quot; |head -1 |xargs awk 'BEGIN { FS = &quot;\st&quot; } ; { print $51&quot; &quot;$52&quot; &quot;$53 }' \n}}}</div>
-<div tiddler="NSLCupload" modifier="flint" modified="201601151834" created="201601081551" tags="">\n[[standard input|https://ftps.nslc.org/]] ([[65.202.239.144|NSLCtransferScript]])\n[[standard error|https://secure.studentclearinghouse.org/stdreport/faces/stdreport?_afrLoop=225425469787007&amp;_afrWindowMode=0&amp;_adf.ctrl-state=16ms1ydp7g_4]]\n\nNSLC upload product is the Ipswitch &quot;Move it&quot; server.\nHere is the [[list of file transfer clients they support|http://docs.ipswitch.com/moveit/dmz8.0/help/anonuser/en/index.htm#23491.htm]]\n\nThe word from Daniel Hamilton\n{{{\nAnother unique feature of out SFTP software. You can connect with a key and it will get rejected the first time out, but it will be stored an one of us can &quot;authorize&quot; for use after the fact. I've done that for you here so follow up login attempts with this key won't be a problem.\n}}}</div>
+<div tiddler="NSLCGoogleScript" modifier="flint" modified="201512301449" created="201512041925" tags="">Google
+ Script is basically Javascript.\n\nThe IDE for this is explained in 
+this [[video|https://www.youtube.com/watch?v=ezbH4IJynhU]]\n\n{{{\n// 
+Page vars\nvar max_rows = 2000;\nvar max_cols = 135;\nvar header_cols = 
+8;\nvar footer_cols = 11;\n\nvar ui = SpreadsheetApp.getUi();\n\n/**\n* 
+Clears &amp;quot;Original from SIS&amp;quot; sheet\n*\n* @name 
+clearSheet\n*/\nfunction clearSheet() {\n  \n    var ss = 
+SpreadsheetApp.getActiveSpreadsheet();\n    var thissheet = 
+ss.getSheetByName(&amp;quot;Original from SIS&amp;quot;);\n    
+thissheet.clear();\n}\n\n/**\n* Generates Tab Separated Values NSLC 
+Report.\n* File will be created in user's &amp;quot;My 
+Drive&amp;quot;\n*\n* @name generateReport\n*/\nfunction 
+generateReport() {\n  \n  \n  var response = ui.alert(&amp;quot;Generate
+ NSLC Report?&amp;quot;, &amp;quot;This should only take a 
+minute&amp;quot;, ui.ButtonSet.YES_NO);\n  \n  // if yes\n  if (response
+ == ui.Button.YES) {\n    \n    // Get the active spreadsheet.\n    var 
+ss = SpreadsheetApp.getActiveSpreadsheet();\n    \n    // get Row 1 data
+ from Header and Footer\n    var header = 
+getHeaderFooter(ss.getSheetByName(&amp;quot;Header&amp;quot;),header_cols);\n
+    var footer = 
+getHeaderFooter(ss.getSheetByName(&amp;quot;Footer&amp;quot;), 
+footer_cols);\n    \n    // get data from Reformatted sheet\n    var 
+data = getData(ss.getSheetByName(&amp;quot;Reformatted&amp;quot;));\n   
+ \n    // test for real data returned\n    if (data) {\n      var doc = 
+header + data + footer;\n      \n      // create a text file with the 
+data\n      var report_name = &amp;quot;nslc_003686_&amp;quot; + 
+getToday() + &amp;quot;.txt&amp;quot;;   \n      var report = 
+DriveApp.createFile(report_name, doc);\n      \n      // move file into 
+NSLC Report/Final folder\n      var report_folder = 
+DriveApp.getFolderById(&amp;quot;0B2TQ0PkLnoJYbFRVaC05NWRFZ1E&amp;quot;);\n
+      report_folder.addFile(report);\n      \n      // display 
+&amp;quot;all done&amp;quot; message\n      ui.alert('The NSLC Report is
+ Complete', 'You can find the report here: 
+https://drive.google.com/drive/?tab=mo#folders/0B2TQ0PkLnoJYbFRVaC05NWRFZ1E',
+ ui.ButtonSet.OK);\n    }\n  }\n}\n\n/**\n* Gets header or footer 
+content\n*\n* @name getHeaderFooter\n* @param {sheet} this_sheet. The 
+sheet from which to pull the data.\n* @param {number} num_cols. The 
+number of columns from which to pull data.\n* @return The data in TSV 
+format.\n*/\nfunction getHeaderFooter(this_sheet, num_cols) {\n  var 
+range = this_sheet.getRange(1, 1, 1, num_cols);\n  \n  return 
+format_tsv(range);\n}\n\n\n/**\n* Gets reformatted content\n*\n* @name 
+getData\n* @param {sheet} this_sheet. The sheet from which to pull the 
+data.\n* @return The data in TSV format.\n*/\nfunction 
+getData(this_sheet) {\n  \n  // get column A\n  var test_range = 
+this_sheet.getRange(1, 1, max_rows, 1);\n  var test_data = 
+test_range.getValues();\n  var test_data_len = test_data.length;\n  var 
+last_row = 0;\n  \n  // test for values to determine last row (can't use
+ functions like getDataRange() because they will return in-cell formulas
+ in addition to acutual values\n  for ( var i=0; i&amp;lt;test_data_len;
+ ++i ){\n    if(isCellEmpty(test_data[i][0])) break;\n    last_row = i +
+ 1;\n  }\n  \n  if (!last_row) {\n    ui.alert('No Data was found on the
+ Original from SIS sheet', 'Aborting.....', ui.ButtonSet.OK);\n    
+return 0;\n  } else {\n    // use that range   // get values\n    var 
+range = this_sheet.getRange(1, 1, last_row, max_cols);\n    \n    // 
+format as TSV and return\n    return format_tsv(range);\n  
+}\n}\n\n\n/**\n* Reformat data into Tab Separated Values\n*\n* @name 
+format_tsv\n* @param {range} range. A range object from the sheet from 
+which to pull the data.\n* @return The data in TSV format.\n*/ 
+\nfunction format_tsv(range) {\n  \n  var data = range.getValues();\n  
+var formatted_data = &amp;quot;&amp;quot;;\n  for (var i = 0; i &amp;lt;
+ data.length; i++) {\n    var row = &amp;quot;&amp;quot;;\n    for (var j
+ = 0; j &amp;lt; data[i].length; j++) {\n      row += data[i][j] + 
+&amp;quot;\sst&amp;quot;;\n    }\n    formatted_data += row + 
+&amp;quot;\ssn&amp;quot;;    \n  }\n  \n  return formatted_data;  \n  
+\n}\n\n\n/**\n* Tests whether parameter is empty\n*\n* @name 
+isCellEmpty\n* @param {cell_data} string. The data to test.\n* @return 
+Returns true if the cell where cell_data was read from is empty.\n*/ 
+\nfunction isCellEmpty(cell_data) {\n  return typeof(cell_data) == 
+&amp;quot;string&amp;quot; &amp;amp;&amp;amp; cell_data == 
+&amp;quot;&amp;quot;;\n}\n\n\n/**\n* Gets today's date\n*\n* @name 
+getToday\n* @return Returns today's date in yyyymmdd form.\n*/ 
+\nfunction getToday() {\n  var today = new Date();\n  var dd = 
+today.getDate();\n  var mm = today.getMonth()+1; //January is 0!\n  var 
+yyyy = today.getFullYear();\n  \n  if(dd&amp;lt;10) {\n    dd='0'+dd\n  }
+ \n  \n  if(mm&amp;lt;10) {\n    mm='0'+mm\n  } \n  \n  return today = 
+yyyy+mm+dd;\n}\n\n\n/**\n* Add menu item to run script\n*\n* @name 
+onOpen\n* @param {event} e. \n*/ \nfunction onOpen(e) {\n  \n  // Get 
+the active spreadsheet.\n  var ss = 
+SpreadsheetApp.getActiveSpreadsheet();\n  var menuEntries = [ {name: 
+&amp;quot;Clear 'Original from SIS' Sheet&amp;quot;, functionName: 
+&amp;quot;clearSheet&amp;quot;}, {name: &amp;quot;Generate 
+Report&amp;quot;, functionName: &amp;quot;generateReport&amp;quot;} ];\n
+  ss.addMenu(&amp;quot;NSLC&amp;quot;, menuEntries);\n}\n}}}\n\nWhat can
+ we learn about [[DriveApp.createFile]]</div>
+<div tiddler="NSLCdata" modifier="flint" modified="201512301554" created="201512041958" tags="">Data
+ Distribution in export file:\n{{{\ncat good.txt |while read line; do 
+echo &amp;quot;$line&amp;quot; |wc -c; done |sort -n |uniq 
+-c\n}}}\n\nmaybe better with awk\n{{{\nawk '{ print length($0); }' 
+&amp;quot;nslc_003686_202602_fixed (3).txt&amp;quot;\n}}}\n\n! Tab 
+Approach\nThis will give you number of tabs line by line:\n{{{\nawk 
+'{print gsub(/\sst/,&amp;quot;&amp;quot;)}' infile &amp;gt; 
+output.txt\n}}}\n\nThis will let you examine a particular tab value, in 
+this case field 2 the SSN\n{{{\nawk 'BEGIN { FS = 
+&amp;quot;\sst&amp;quot; } ; { print $2 }' \n}}}\n\nHeader 8 tabs\nData 
+Lines 135 tabs\nFooter 11 tabs\n\nSearch cp 
+d1_schema_complete_2015-12-09.csv schema.py ; sed 's/,//1' schema.py 
+|sed 's/,/=[/1' | sed 's/,/&amp;quot;,&amp;quot;/g'| sed 
+'s/$/&amp;quot;]/g' |sed 's/=\ss[/=\ss[\ss&amp;quot;/g'\n\nlinux library
+ parsing fixed length 
+mainframe\n\nhttp://www.linuxtopia.org/online_books/programming_books/python_programming/python_ch34s05.htmlcp
+ \n{{{\nd1_schema_complete_2015-12-09.csv schema.py~ ; sed 's/,//1' 
+schema.py~ |sed 's/,/=[/1' | sed 's/,/&amp;quot;,&amp;quot;/g'| sed 
+'s/$/&amp;quot;]/g' |sed 's/=\ss[/=\ss[\ss&amp;quot;/g'# &amp;gt; 
+schema.py\n}}}\n\n\nhttps://code.google.com/p/csvfix/\n\n* Save a fully 
+quoted\n* Check for bad elements\n* Run this code\n{{{\ncp 
+d1_schema_complete_2015-12-10-1.csv schema.py~ ;cat schema.py~ |sed 
+'s/,//1' |sed 's/&amp;quot;&amp;quot;//1' | sed 's/,/ = [/1' |sed 
+'s/&amp;quot;//1' |sed 's/&amp;quot;//1' |sed 's/$/]/g'  &amp;gt; 
+schema.py \n}}}</div>
+<div tiddler="NSLCsources" modifier="flint" modified="201512272211" created="201512101451" tags="">\n*
+ [[National Student Clearinghouse Enrollment Reporting Programming 
+&amp;amp; Testing 
+Guide|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf]]\n*
+ [[The part we are interested 
+in|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf#page=15]]\n*
+ 
+[[Header|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf#page=14]]\n*
+ 
+[[Footer|http://www.studentclearinghouse.org/colleges/files/EnrollRept_ProgrammingandTestingGuide.pdf#page=31]]</div>
+<div tiddler="NSLCdataAnalysis" modifier="flint" modified="201512301652" created="201512301650" tags="">Here
+ is the script\n\n{{{\n ls -alt --full-time --time-style=long-iso . | 
+grep $(date +%F) |cut -c 50- | grep -v ^&amp;quot;\ss.&amp;quot; |head 
+-1 |xargs awk 'BEGIN { FS = &amp;quot;\sst&amp;quot; } ; { print 
+$51&amp;quot; &amp;quot;$52&amp;quot; &amp;quot;$53 }' \n}}}</div>
+<div tiddler="NSLCupload" modifier="flint" modified="201601151834" created="201601081551" tags="">\n[[standard
+ input|https://ftps.nslc.org/]] 
+([[65.202.239.144|NSLCtransferScript]])\n[[standard 
+error|https://secure.studentclearinghouse.org/stdreport/faces/stdreport?_afrLoop=225425469787007&amp;amp;_afrWindowMode=0&amp;amp;_adf.ctrl-state=16ms1ydp7g_4]]\n\nNSLC
+ upload product is the Ipswitch &amp;quot;Move it&amp;quot; 
+server.\nHere is the [[list of file transfer clients they 
+support|http://docs.ipswitch.com/moveit/dmz8.0/help/anonuser/en/index.htm#23491.htm]]\n\nThe
+ word from Daniel Hamilton\n{{{\nAnother unique feature of out SFTP 
+software. You can connect with a key and it will get rejected the first 
+time out, but it will be stored an one of us can 
+&amp;quot;authorize&amp;quot; for use after the fact. I've done that for
+ you here so follow up login attempts with this key won't be a 
+problem.\n}}}</div>
 <div tiddler="NSLCFileCompare" modifier="flint" modified="201601081839" created="201601081839" tags="">Here is the file compare code:\n\n{{{\n\n}}}</div>
-<div tiddler="NSLCNewDataFlow" modifier="flint" modified="201601091501" created="201601091501" tags="">! To Operate\n# Run report in SIS\n# Download Report\n# Import into Excell\n# Modify to hearts content\n# Save as xlsx file\n# submit to nslcutil.py\n# done.\n\n! To Validate\n# take csv, tab, or txt file\n# submit to nslcutil.py -f\n# read result.\n</div>
-<div tiddler="NSLCreadExcellSheet" modifier="flint" modified="201601102054" created="201601091505" tags="">Options\n\n* [[openpyxl|https://pypi.python.org/pypi/openpyxl]] note must be version 2.3.2 or above\n** Download openpyxl-2.3.2.tar.gz\n** Figure out how to unzip on the windows platform\n** Test from python\n{{{\n if str(openpyxl.__version__) &lt;&gt; &quot;2.3.2&quot;:\n}}}\nTADA\nThe error occurs if you start python in the following directory:\n{{{\nflint@seltzer:~/clients/goddard/sis/nslc/bin$ python\nPython 2.7.6 (default, Jun 22 2015, 17:58:13) \n[GCC 4.8.2] on linux2\nType &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.\n&gt;&gt;&gt; import openpyxl\nTraceback (most recent call last):\n  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;\n  File &quot;/usr/local/lib/python2.7/dist-packages/openpyxl-2.3.2-py2.7.egg/openpyxl/__init__.py&quot;, line 26, in &lt;module&gt;\n    from openpyxl.xml import LXML\n  File &quot;/usr/local/lib/python2.7/dist-packages/openpyxl-2.3.2-py2.7.egg/openpyxl/xml/__init__.py&quot;, line 27, in &lt;module&gt;\n    LXML = lxml_available() and lxml_env_set()\n  File &quot;/usr/local/lib/python2.7/dist-packages/openpyxl-2.3.2-py2.7.egg/openpyxl/xml/__init__.py&quot;, line 11, in lxml_available\n    from lxml.etree import LXML_VERSION\n  File &quot;serializer.pxi&quot;, line 4, in init lxml.etree (src/lxml/lxml.etree.c:193884)\n  File &quot;/usr/lib/python2.7/gzip.py&quot;, line 36, in &lt;module&gt;\n    class GzipFile(io.BufferedIOBase):\nAttributeError: 'module' object has no attribute 'BufferedIOBase'\n&gt;&gt;&gt; \n\nif you open in this directory:\n}}}\n\n\n* [[pythonexcells|http://pythonexcels.com/basic-excel-driving-with-python/]] uses COM/DCOM link</div>
-<div tiddler="NSLCtransferScript" modifier="flint" modified="201601121402" created="201601121357" tags="">'12 January 2016'\nNSLCtransferScript\n\nNmap\n{{{\nStarting Nmap 6.40 ( http://nmap.org ) at 2016-01-12 08:55 EST\nNmap scan report for ftps.nslc.org (65.202.239.144)\nHost is up (0.027s latency).\nNot shown: 996 filtered ports\nPORT     STATE  SERVICE\n21/tcp   open   ftp\n22/tcp   open   ssh\n443/tcp  open   https\n3011/tcp closed trusted-web\n\n\n}}}</div>
-<div tiddler="NSLCactivities" modifier="flint" modified="201601251540" created="201601121514" tags="">'12 January 2016'\n\n1. Re-patching the 12-29-15 submission ASAP\n2. Testing the 12-29-15 submission against past submissions\n3. Submitting this report.\n\n\n\n4. Completing the [[new program|NewProgram]]\n5. Testing it with sample data\n6. Submitting the new report with live data.\n</div>
-<div tiddler="NewProgram" modifier="flint" modified="201601251543" created="201601251539" tags="">nslcutil.py\n\n{{{\nsed -i 's/\s,\s&quot;/_/1' \nsed -i 's/_/__/1' d1_schema_meth_2016-01-24.csv\n}}}</div></div></div></body></html>
+<div tiddler="NSLCNewDataFlow" modifier="flint" modified="201601091501" created="201601091501" tags="">!
+ To Operate\n# Run report in SIS\n# Download Report\n# Import into 
+Excell\n# Modify to hearts content\n# Save as xlsx file\n# submit to 
+nslcutil.py\n# done.\n\n! To Validate\n# take csv, tab, or txt file\n# 
+submit to nslcutil.py -f\n# read result.\n</div>
+<div tiddler="NSLCreadExcellSheet" modifier="flint" modified="201601102054" created="201601091505" tags="">Options\n\n*
+ [[openpyxl|https://pypi.python.org/pypi/openpyxl]] note must be version
+ 2.3.2 or above\n** Download openpyxl-2.3.2.tar.gz\n** Figure out how to
+ unzip on the windows platform\n** Test from python\n{{{\n if 
+str(openpyxl.__version__) &amp;lt;&amp;gt; 
+&amp;quot;2.3.2&amp;quot;:\n}}}\nTADA\nThe error occurs if you start 
+python in the following 
+directory:\n{{{\nflint@seltzer:~/clients/goddard/sis/nslc/bin$ 
+python\nPython 2.7.6 (default, Jun 22 2015, 17:58:13) \n[GCC 4.8.2] on 
+linux2\nType &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, 
+&amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more 
+information.\n&amp;gt;&amp;gt;&amp;gt; import openpyxl\nTraceback (most 
+recent call last):\n  File &amp;quot;&amp;lt;stdin&amp;gt;&amp;quot;, 
+line 1, in &amp;lt;module&amp;gt;\n  File 
+&amp;quot;/usr/local/lib/python2.7/dist-packages/openpyxl-2.3.2-py2.7.egg/openpyxl/__init__.py&amp;quot;,
+ line 26, in &amp;lt;module&amp;gt;\n    from openpyxl.xml import LXML\n
+  File 
+&amp;quot;/usr/local/lib/python2.7/dist-packages/openpyxl-2.3.2-py2.7.egg/openpyxl/xml/__init__.py&amp;quot;,
+ line 27, in &amp;lt;module&amp;gt;\n    LXML = lxml_available() and 
+lxml_env_set()\n  File 
+&amp;quot;/usr/local/lib/python2.7/dist-packages/openpyxl-2.3.2-py2.7.egg/openpyxl/xml/__init__.py&amp;quot;,
+ line 11, in lxml_available\n    from lxml.etree import LXML_VERSION\n  
+File &amp;quot;serializer.pxi&amp;quot;, line 4, in init lxml.etree 
+(src/lxml/lxml.etree.c:193884)\n  File 
+&amp;quot;/usr/lib/python2.7/gzip.py&amp;quot;, line 36, in 
+&amp;lt;module&amp;gt;\n    class 
+GzipFile(io.BufferedIOBase):\nAttributeError: 'module' object has no 
+attribute 'BufferedIOBase'\n&amp;gt;&amp;gt;&amp;gt; \n\nif you open in 
+this directory:\n}}}\n\n\n* 
+[[pythonexcells|http://pythonexcels.com/basic-excel-driving-with-python/]]
+ uses COM/DCOM link</div>
+<div tiddler="NSLCtransferScript" modifier="flint" modified="201601121402" created="201601121357" tags="">'12
+ January 2016'\nNSLCtransferScript\n\nNmap\n{{{\nStarting Nmap 6.40 ( 
+http://nmap.org ) at 2016-01-12 08:55 EST\nNmap scan report for 
+ftps.nslc.org (65.202.239.144)\nHost is up (0.027s latency).\nNot shown:
+ 996 filtered ports\nPORT     STATE  SERVICE\n21/tcp   open   
+ftp\n22/tcp   open   ssh\n443/tcp  open   https\n3011/tcp closed 
+trusted-web\n\n\n}}}</div>
+<div tiddler="NSLCactivities" modifier="flint" modified="201601251540" created="201601121514" tags="">'12
+ January 2016'\n\n1. Re-patching the 12-29-15 submission ASAP\n2. 
+Testing the 12-29-15 submission against past submissions\n3. Submitting 
+this report.\n\n\n\n4. Completing the [[new program|NewProgram]]\n5. 
+Testing it with sample data\n6. Submitting the new report with live 
+data.\n</div>
+<div tiddler="NewProgram" modifier="flint" modified="201601251543" created="201601251539" tags="">nslcutil.py\n\n{{{\nsed -i 's/\ss,\ss&amp;quot;/_/1' \nsed -i 's/_/__/1' d1_schema_meth_2016-01-24.csv\n}}}</div>
+<div tiddler="NSLCRequirements" modifier="flint" modified="201602041710" created="201601271537" tags="">
+ '27 January 2016'\n\nNSLC Functional Requirements\n\n* converts xlsx 
+file &amp; transmistts to NSLC\n* Test the following fire formats:\n** 
+xlsx \n** csv\n** tab\n....file types for data consistency\n* Convert 
+csv to xlsx \n* Convert xlsx and csv to tab\n\nNSLCsources</div>
+<div tiddler="Development " modifier="flint" modified="201602081600" created="201602081600" tags="">Type the text for '8 February 2016'</div>
+<div tiddler="NSLC_upload_step-by-step_Manual" modifier="flint" modified="201602111922" created="201601291809" tags="">Here
+ are the steps for '29 January 2016'\n# Get the xlsx file from Josh\n# 
+Open and remove the I row "degree concentration"\n# Save result as 
+".tab"\n# set filter to seperator is a tab\n# Copy up to Greg's script 
+page\n# Run greg's report to get the A1 and the T1 records.\n# Download 
+result\n# Gedit result\n# Gedit tab file\n# Copy the first and last line
+ from gregs file into the tab file\n# save rename tab file\n# run 
+{{{bin/chkt.sh &lt;tab file name&gt;}}} result:\n** number of tabs per 
+line\n** No blank lines\n**       1 8\n**      1 11\n**    688 108\n** 
+Nice numbers in the program 1 length field.\n# Upload by runing  
+{{{bin/sf.sh &lt;tab file name&gt;}}}\n# Check [[log 
+file|https://ftps.nslc.org/]] record number\n# Mail Geeta let her 
+know...\n# save report to share and drive. \n\n</div>
+<div tiddler="NSLC_upload_step-by-step_Using_nslcutility.py" modifier="flint" modified="201602111941" created="201602111922" tags="">Here
+ are the steps for '11 February 2016'\nNote:\nThis must be set up 
+properly on the machine doing the work.\n\n# Download the "NSLC*.csv" 
+file from SIS.\n# Convert the "NSLC*.csv" to "NSLC*.xlsx" using 
+{{{bin/nslcutil.py -f  NSLC*.csv NSLC*.xlsx}}}\n# Open with Microsoft 
+Excell and remove the I row "degree concentration"\n** Save result as 
+csv with name "NSLC*.tab"\n** set filter to separator is a tab\n# Check 
+file using {{{bin/nslcutil.py -t  NSLC*.tab }}}\n# Run 
+{{{bin/nslcutil.py -a  NSLC*.tab 2NSLC.tab --tab }}} to insert A1 header
+ and T1 footer.\n# Run {{{bin/nslcutil.py -m  2NSLC.tab --tab }}} to 
+send file to NSLC\n# Check [[log file|https://ftps.nslc.org/]] record 
+number\n# Mail Geeta let her know...\n# save {{{2NSLC.tab}}} to share 
+and drive. \n\nFinally be aware that with some further programming work 
+this process can be further simplified and automated.\n</div>
+</div>
+
+</body></html>
