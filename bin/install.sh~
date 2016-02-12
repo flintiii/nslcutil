@@ -11,12 +11,13 @@ fi
 #
 read -p "This gets odd packages..." ans
 # get odd packages
+apt-get update
 apt-get install python-pip
 sudo pip install openpyxl
 sudo pip install docopt
 #
 read -p "This install 'sf.sh' which contains secrets..." ans
-# Install sf.sh which contains secrets...
+# Installs sf.sh which contains secrets...
 # make repository
 mkdir /root/bin
 # move file to repository
@@ -39,4 +40,4 @@ read -p "This tests program..." ans
 nslcutil.py -f example.csv test.xlsx
 scp test.xlsx flint@192.168.1.73:/home/flint/clients/goddard/sis/nslc/.
 #
-echo "All Done"
+echo "All Done!!!"

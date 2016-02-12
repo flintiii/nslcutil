@@ -11,12 +11,13 @@ fi
 #
 read -p "This gets odd packages..." ans
 # get odd packages
+apt-get update
 apt-get install python-pip
 sudo pip install openpyxl
 sudo pip install docopt
 #
 read -p "This install 'sf.sh' which contains secrets..." ans
-# Install sf.sh which contains secrets...
+# Installs sf.sh which contains secrets...
 # make repository
 mkdir /root/bin
 # move file to repository
@@ -29,7 +30,7 @@ read -p "This fixes comprogram variable in program..." ans
 # fix comprogram variable in program.
 sed -i 's/bin\/sf.sh/\/root\/bin\/sf.sh/1' nslcutil.py
 # 
-read -p "This symlink program correctly..." ans
+read -p "This will symlink program correctly..." ans
 # symlink this to /usr/local/bin/
 sudo ln -s ~flint/nslc/nslcutil/nslcutil.py /usr/local/bin/
 sudo ln -s ~flint/nslc/nslcutil/nslcobjects.py   /usr/local/bin/
