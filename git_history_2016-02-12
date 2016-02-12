@@ -1,0 +1,142 @@
+ 1016  git add .
+ 1017  git commit -m "reorganize files for nslcutil.py 0.7" -a
+ 1018  git remote -v
+ 1019  git push nslcutil
+ 1021  cd 2git/
+ 1022  history | grep git
+ 1023  history | grep git > git.history
+ 1025  cd .git/
+ 1034  history | grep git
+ 1035  # git commit -m "develop issues for nslcutil.py 0.7" -a
+ 1036  git add .
+ 1037  git commit -m "develop issues for nslcutil.py 0.7" -a
+ 1038  git remote -v
+ 1039  git push nslcutil
+ 1082  cp nslctiddler.html ../sis/nslc/2git/$(date +%F)_nslctiddler.html
+ 1083  cd ../sis/nslc/2git/
+ 1085  git add .
+ 1086  grep commit git.history 
+ 1087  git commit -m "reorganize files for nslcutil.py 0.7" -a
+ 1088  git commit -m "add tiddler" -a
+ 1089  git add .
+ 1090  git commit -m "add tiddler" -a
+ 1091  grep push git.history 
+ 1092  git push nslcutil
+ 1095  cd 2git/
+ 1301  git remote add origin ssh://flint@23.22.0.235:/var/opt/repositories/sis/nslcutil.git
+ 1303  git remote -v
+ 1321  cd 2git/
+ 1322  grep committ git.history 
+ 1323  grep commit git.history 
+ 1324  git commit -m "Added geneval(n) function" -a
+ 1325  git add .
+ 1326  git commit -m "Added geneval(n) function" -a
+ 1327  grep push git.history 
+ 1328  git push nslcutil
+ 1338  gedit git.history &
+ 1339  ssh -vT flintiii@github.com
+ 1340  ssh -vT git@github.com
+ 1341  git push github
+ 1342  cd .git/
+ 1346  pull ssh://git@github.com:flintiii/nslcutil.git
+ 1347  git pull ssh://git@github.com:flintiii/nslcutil.git
+ 1348  git push ssh://git@github.com:flintiii/nslcutil.git
+ 1349  ssh -vT git@github.com
+ 1350  git push ssh://git@github.com:flintiii/nslcutil.git
+ 1351  ssh -Tv git@github.com
+ 1352  git push https://github.com/flintiii/nslcutil
+ 1353  git pull ssh://git@github.com:flintiii/nslcutil.git
+ 1354  git pull https://github.com/flintiii/nslcutil
+ 1355  git add .
+ 1357  git pull https://github.com/flintiii/nslcutil
+ 1358  git add .
+ 1359  git commit -m "current state of nslcutil.py code at version 0.8" -a
+ 1360  git push https://github.com/flintiii/nslcutil
+ 1361  history | grep git
+ 1362  history | grep git >> git.history 
+ 1400  history | grep git
+ 1401  cd sis/nslc/2git/
+ 1402  cat git.history 
+ 1403  # git commit -m "Working the geneval" -a
+ 1404  git add .
+ 1405  git commit -m "Working the geneval" -a
+ 1406  git push nslcutil
+ 1407  git remote add github ssh git@github.com:flintiii/nslcutil.git
+ 1408  git remote add github ssh:git@github.com:flintiii/nslcutil.git
+ 1409  git push github
+ 1410  git pull ssh:git@github.com:flintiii/nslcutil.git
+ 1417  cd 2git/
+ 1646  cd 2git/
+ 1647  cat bin/git.sh
+ 1648  git add .
+ 1649  git add -u
+ 1650  git commit --all
+ 1651  echo "Committing to goddard Redmine:"; git push nslcutil
+ 1652  echo "Committing to Github:";git push gitssl
+ 1748  cd ../sis/nslc/2git/
+ 1756  cp git.sh obe/$(date +%F)_git.sh
+ 1757  gedit git.sh
+ 1759  bin/git.sh "Finally working with example.csv, need command line next"
+ 1760  gedit bin/git.sh &
+ 1761  bin/git.sh "Finally working with example.csv, need command line next"
+ 1762  bin/git.sh 
+ 1763  bin/git.sh "Finally working with example.csv, need command line next"
+ 1764  # bin/git.sh "Finally working with example.csv, need command line next"
+ 1765  bin/git.sh 
+ 1766  bin/git.sh Finally working with example.csv, need command line next
+ 1767  bin/git.sh 'Finally working with example.csv, need command line next'
+ 1768  git commit --all
+ 1769  echo "Committing to goddard Redmine:"; git push nslcutil
+ 1770  echo "Committing to Github:";git push github
+ 1771  cd .git/
+ 1773  git remote -v
+ 1774  echo "Committing to Github:";git push gitssl
+ 1796  cd 2git/
+ 1797  bin/git.sh
+ 1799  cd 2git/
+ 1805  cd 2git/
+ 1850  cd 2git/
+ 1852  bin/git.sh
+ 1853  gedit bin/git.sh
+ 1855  bin/git.sh 
+ 1856  cd 2git/
+ 1857  bin/git.sh 
+ 1858  git commit -m "Got the tab test working"
+ 1859  git add .
+ 1860  git commit -m "Got the tab test working"
+ 1861  echo "Committing to goddard Redmine:"; git push nslcutil
+ 1862  echo "Committing to Github:";git push gitssl
+ 1863  less git.history
+ 1865  cd 2git/
+ 1882  cd 2git/
+ 1883  bin/git.sh
+ 1884  cat bin/git.sh
+ 1885  git add .
+ 1886  git add -u
+ 1887  git commit --all 
+ 1888  git commit -m "$(read -p 'Commit description: ')" 
+ 1889  echo "Committing to goddard Redmine:"; git push nslcutil
+ 1890  echo "Committing to Github:";git push gitssl
+ 1891  which git.sh
+ 1966  cd 2git/
+ 1969  cat bin/git.sh
+ 1970  git add . 
+ 1971  git add -u
+ 1972  git add --all
+ 1973  git commit --all
+ 1979  history | grep git
+ 1980  git add . 
+ 1981  git add -u
+ 1982  git add -all
+ 1983  cat bin/git.sh
+ 1984  echo "Committing to goddard Redmine:"; git push nslcutil
+ 1985  echo "Committing to Github:";git push gitssl
+ 1988  cd sis/nslc/2git/
+ 1989  cat bin/git.sh
+ 1991  git add . 
+ 1992  git add -u 
+ 1993  git commit --all
+ 1994  git commit -m "$(read -p 'Commit description: ')" 
+ 2009  cd 2git/
+ 2010  history | grep git
+ 2011  history | grep git > git_history_2016-02-12
